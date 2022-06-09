@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMoviles">
         <activity
-            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
+            android:name=".Registro"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
