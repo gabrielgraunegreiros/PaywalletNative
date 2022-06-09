@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registro"
+    tools:context=".controller.ControllerRegistro"
     android:background="#3A4D55">
 
     <EditText

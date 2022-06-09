@@ -1,33 +1,33 @@
-package com.usil.proyectomoviles;
+package com.usil.proyectomoviles.entity;
 
 public class Usuario {
-    String nombre,apellidos,correo, usuario, contraseña;
+    String nombre,apellidos,correo, usuario, contrasena;
 
     public Usuario() {
 
     }
 
-    public Usuario(String nombre, String apellidos, String correo, String usuario, String contraseña) {
+    public Usuario(String nombre, String apellidos, String correo, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.usuario = usuario;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
     }
 
-    public String getnombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setnombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getapellidos() {
+    public String getApellidos() {
         return apellidos;
     }
 
-    public void setapellidos(String apellidos) {
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
@@ -47,11 +47,11 @@ public class Usuario {
         this.usuario = usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContraseña(String contrasena) {
+        this.contrasena = contrasena;
     }
 }

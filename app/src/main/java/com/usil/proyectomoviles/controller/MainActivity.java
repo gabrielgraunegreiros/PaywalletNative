@@ -1,4 +1,4 @@
-package com.usil.proyectomoviles;
+package com.usil.proyectomoviles.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.usil.proyectomoviles.R;
 
 public class MainActivity extends AppCompatActivity {
     EditText edtUsuario, edtContra;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         txtRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Registro.class);
+                Intent intent = new Intent(MainActivity.this, ControllerRegistro.class);
                 startActivity(intent);
             }
         });
