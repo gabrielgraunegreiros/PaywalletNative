@@ -7,17 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.usil.proyectomoviles.R;
+import com.usil.proyectomoviles.entity.Usuario;
+import com.usil.proyectomoviles.modelo.DAOUsuario;
 
 public class MainActivity extends AppCompatActivity {
     EditText edtUsuario, edtContra;
     TextView txtRegistro;
+    DAOUsuario daoUsuario = new DAOUsuario(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        daoUsuario.openDB();
         asignarReferencias();
         registrarUsuario();
     }
@@ -36,6 +41,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void identificarUsario(View view){
+        String us=edtUsuario.getText().toString();
+        String contra=edtContra.getText().toString();
+        Usuario user=daoUsuario.validarUsuario(us,contra);
+        if(user!=null){
+            Intent intent=new Intent(this,ControllerRegistro.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

@@ -79,4 +79,23 @@ public class DAOUsuario {
         }
         return listaUsu;
     }
+
+    public Usuario validarUsuario(String us, String contra){
+        ArrayList<Usuario> listaUsu = new ArrayList<>();
+        Usuario user=null;
+        try {
+            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.NOMBRETABLA,null);
+            while (c.moveToNext()){
+                listaUsu.add(new Usuario(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
+            }
+            for (Usuario u: listaUsu) {
+                if(u.getUsuario().equals(us) && u.getContrasena().equals(contra)){
+                    user=u;
+                }
+            }
+            return user;
+        } catch (Exception e){
+            return user;
+        }
+    }
 }

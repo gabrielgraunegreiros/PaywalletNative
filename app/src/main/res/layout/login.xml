@@ -52,6 +52,7 @@
         android:layout_marginTop="51dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#202F35"
+        android:onClick="identificarUsario"
         android:text="Iniciar Sesión"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
