@@ -98,4 +98,20 @@ public class DAOUsuario {
             return user;
         }
     }
+
+    public Usuario getUser(String us){
+        Usuario user=null;
+        ArrayList<Usuario> listaUsuarios=new ArrayList<>();
+        try {
+            listaUsuarios=getUsuario();
+            for (Usuario u: listaUsuarios) {
+                if(u.getUsuario().equals(us)){
+                    user=u;
+                }
+            }
+            return user;
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

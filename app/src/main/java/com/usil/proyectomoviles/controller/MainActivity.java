@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         Usuario user=daoUsuario.validarUsuario(us,contra);
         if(user!=null){
             Intent intent=new Intent(MainActivity.this,Home.class);
+            Bundle bundle=new Bundle();
+            bundle.putString("usuario",user.getUsuario());
+            intent.putExtras(intent);
             startActivity(intent);
             finish();
         }else{
