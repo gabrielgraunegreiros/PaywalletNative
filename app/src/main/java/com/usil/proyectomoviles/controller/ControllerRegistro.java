@@ -2,9 +2,12 @@ package com.usil.proyectomoviles.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.usil.proyectomoviles.R;
@@ -12,11 +15,14 @@ import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.modelo.DAOUsuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerRegistro extends AppCompatActivity {
     EditText edtNom, edtApe, edtUsu, edtCorreo, edtContraseña, edtConfirmar;
+    ListView lstUsu;
     DAOUsuario daoUsuario = new DAOUsuario(this);
-    String nombre, apellido, usuario, correo, contraseña;
+    String nombre, apellidos, usuario, correo, contraseña;
+    ArrayList<Usuario> listaUsu = new ArrayList<>();
     Usuario u;
 
     @Override
@@ -25,6 +31,7 @@ public class ControllerRegistro extends AppCompatActivity {
         setContentView(R.layout.lyt_registro);
         asignarReferencias();
         daoUsuario.openDB();
+        listarUsuarios();
     }
 
     private void asignarReferencias() {
@@ -34,24 +41,35 @@ public class ControllerRegistro extends AppCompatActivity {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtContraseña = findViewById(R.id.edtContraseña);
         edtConfirmar = findViewById(R.id.edtConfirmar);
+        lstUsu = findViewById(R.id.lstUsuario);
     }
 
     public void registrarUsuario(View view){
         String confirmar;
         nombre = edtNom.getText().toString();
-        apellido = edtApe.getText().toString();
+        apellidos = edtApe.getText().toString();
         usuario = edtUsu.getText().toString();
         correo = edtCorreo.getText().toString();
         contraseña = edtContraseña.getText().toString();
         confirmar = edtConfirmar.getText().toString();
-        if(confirmar == contraseña){
-            u = new Usuario(nombre,apellido,correo,usuario,contraseña);
+        if(confirmar.equals(contraseña)){
+            u = new Usuario(nombre,apellidos,correo,usuario,contraseña);
             daoUsuario.registrarUsuario(u);
             Toast.makeText(ControllerRegistro.this,"Registrado correctamente",Toast.LENGTH_SHORT).show();
             limpiar();
         } else {
             Toast.makeText(ControllerRegistro.this,"Confirme la contraseña correctamente",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void listarUsuarios() {
+        listaUsu= daoUsuario.getUsuario();
+        List<String> lista = new ArrayList<>();
+        for (Usuario u: listaUsu){
+            lista.add("Nombre: "+u.getNombre()+"\nApellidos: "+u.getApellidos()+"\nCorreo: "+u.getCorreo()+"\nUsuario: "+u.getContrasena()+"\nContraseña: "+u.getContrasena()+"\n");
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lista);
+        lstUsu.setAdapter(adapter);
     }
 
     private void limpiar() {
@@ -61,5 +79,10 @@ public class ControllerRegistro extends AppCompatActivity {
         edtCorreo.setText("");
         edtContraseña.setText("");
         edtConfirmar.setText("");
+    }
+
+    public void menuPrincipal(View view){
+        Intent intent = new Intent(ControllerRegistro.this, MainActivity.class);
+        startActivity(intent);
     }
 }

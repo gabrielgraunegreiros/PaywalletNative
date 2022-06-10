@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMoviles">
         <activity
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
             android:name=".controller.ControllerRegistro"
             android:exported="false" />
         <activity

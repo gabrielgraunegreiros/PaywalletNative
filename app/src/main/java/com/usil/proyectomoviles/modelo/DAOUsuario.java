@@ -28,11 +28,12 @@ public class DAOUsuario {
         database.close();
     }
 
+
     public void registrarUsuario(Usuario u){
         try {
             ContentValues contentValues = new ContentValues();
             contentValues.put("nombre",u.getNombre());
-            contentValues.put("apellido",u.getApellidos());
+            contentValues.put("apellidos",u.getApellidos());
             contentValues.put("correo",u.getCorreo());
             contentValues.put("usuario",u.getUsuario());
             contentValues.put("contrasena",u.getContrasena());
