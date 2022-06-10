@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".controller.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="407dp"
-        android:layout_height="682dp"
-        app:layout_constraintBottom_toTopOf="@+id/menuNavegacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menuNavegacion"
         android:layout_width="match_parent"
@@ -28,5 +17,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/main_menu"/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="com.usil.proyectomoviles.controller.FragmentPerfiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="191dp"
+        tools:layout_editor_absoluteY="212dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,10 @@ import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.util.ConstantesDB;
 import com.usil.proyectomoviles.util.DBPaywallet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class DAOUsuario {
+public class DAOUsuario implements Serializable {
     DBPaywallet dbPaywallet;
     SQLiteDatabase database;
 
@@ -103,7 +104,10 @@ public class DAOUsuario {
         Usuario user=null;
         ArrayList<Usuario> listaUsuarios=new ArrayList<>();
         try {
-            listaUsuarios=getUsuario();
+            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.NOMBRETABLA,null);
+            while (c.moveToNext()){
+                listaUsuarios.add(new Usuario(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
+            }
             for (Usuario u: listaUsuarios) {
                 if(u.getUsuario().equals(us)){
                     user=u;
@@ -111,7 +115,7 @@ public class DAOUsuario {
             }
             return user;
         }catch (Exception e){
-            return null;
+            return user;
         }
     }
 }

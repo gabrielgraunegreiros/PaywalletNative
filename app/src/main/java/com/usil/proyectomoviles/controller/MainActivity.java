@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         if(user!=null){
             Intent intent=new Intent(MainActivity.this,Home.class);
             Bundle bundle=new Bundle();
-            bundle.putString("usuario",user.getUsuario());
-            intent.putExtras(intent);
+            bundle.putSerializable("user",user);
+            intent.putExtras(bundle);
             startActivity(intent);
             finish();
         }else{

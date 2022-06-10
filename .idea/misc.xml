@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/activity_main.xml" value="0.29322916666666665" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/login.xml" value="0.29322916666666665" />
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_perfil.xml" value="0.33" />
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_home.xml" value="0.2" />
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_principal.xml" value="0.33" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_registro.xml" value="0.29322916666666665" />
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/menu/main_menu.xml" value="0.33" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_actividad.xml" value="0.365625" />

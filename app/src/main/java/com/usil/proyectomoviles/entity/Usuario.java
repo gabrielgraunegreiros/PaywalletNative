@@ -1,6 +1,8 @@
 package com.usil.proyectomoviles.entity;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
     String nombre,apellidos,correo, usuario, contrasena;
 
     public Usuario() {
