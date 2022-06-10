@@ -3,10 +3,12 @@ package com.usil.proyectomoviles.controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.usil.proyectomoviles.R;
 import com.usil.proyectomoviles.entity.Usuario;
+import com.usil.proyectomoviles.entity.iUsuario;
 import com.usil.proyectomoviles.modelo.DAOUsuario;
 
 public class Home extends AppCompatActivity{
@@ -31,4 +33,8 @@ public class Home extends AppCompatActivity{
     private void recuperarData() {
 
     }
+
+
+
+
 }

@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.util.ConstantesDB;
@@ -48,15 +49,14 @@ public class DAOUsuario implements Serializable {
         try {
             ContentValues contentValues = new ContentValues();
             contentValues.put("nombre",u.getNombre());
-            contentValues.put("apellido",u.getApellidos());
+            contentValues.put("apellidos",u.getApellidos());
             contentValues.put("correo",u.getCorreo());
             contentValues.put("usuario",u.getUsuario());
             contentValues.put("contrasena",u.getContrasena());
-            database.update(ConstantesDB.NOMBRETABLA,contentValues,"usuario=?",new String[]{u.getUsuario()+""});
+            database.update(ConstantesDB.NOMBRETABLA,contentValues,"usuario LIKE '"+u.getUsuario()+"'",null);
             /*Otra forma es:
             database.update(ConstantesDB.NOMBRETABLA,contentValues,"id="+p.getId(),null);*/
         } catch (Exception e){
-
         }
     }
 

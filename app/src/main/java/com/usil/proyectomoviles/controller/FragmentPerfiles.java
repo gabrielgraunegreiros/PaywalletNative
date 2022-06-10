@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +22,9 @@ import java.util.ArrayList;
 public class FragmentPerfiles extends Fragment {
     TextView txtUsuarioPerfil, txtNombrePerfil,txtApellidoPerfil;
     EditText edtEmailPerfil;
-    Button btnModificarPerfil;
-    Usuario user;
+    Button btnModificarPerfil, btnEliminarPerfil;
+    Usuario u;
+    DAOUsuario daoUsuario;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,16 +35,29 @@ public class FragmentPerfiles extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        daoUsuario=new DAOUsuario(getActivity().getApplicationContext());
+        daoUsuario.openDB();
         txtUsuarioPerfil=getView().findViewById(R.id.txtUsuarioPerfil);
         txtNombrePerfil=getView().findViewById(R.id.txtNombrePerfil);
         txtApellidoPerfil=getView().findViewById(R.id.txtApellidoPerfil);
         edtEmailPerfil=getView().findViewById(R.id.edtEmailPerfil);
         btnModificarPerfil=getView().findViewById(R.id.btnModificarPerfil);
+        btnEliminarPerfil=getView().findViewById(R.id.btnEliminarPerfil);
         Bundle bundle=getArguments();
-        user=(Usuario) bundle.getSerializable("user");
+        u=(Usuario) bundle.getSerializable("user");
+        Usuario user=daoUsuario.getUser(u.getUsuario());
         txtUsuarioPerfil.setText(user.getUsuario());
         txtNombrePerfil.setText(user.getNombre());
         txtApellidoPerfil.setText(user.getApellidos());
         edtEmailPerfil.setText(user.getCorreo());
+        btnModificarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email=edtEmailPerfil.getText().toString();
+                user.setCorreo(email);
+                daoUsuario.modificarDatos(user);
+                Toast.makeText(getActivity().getApplicationContext(), "Correo Modificado", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

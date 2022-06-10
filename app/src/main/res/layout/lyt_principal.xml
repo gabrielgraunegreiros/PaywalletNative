@@ -121,7 +121,8 @@
         android:name="com.usil.proyectomoviles.controller.FragmentPerfiles"
         android:layout_width="match_parent"
         android:layout_height="668dp"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="151dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

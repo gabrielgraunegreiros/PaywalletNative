@@ -1,6 +1,8 @@
 package com.usil.proyectomoviles.entity;
 
+import android.view.View;
+
 public interface iUsuario {
     public void seleccionarUsuario(Usuario u);
-    public Usuario obtenerUsuario(String usuario);
+    public void modificarUsuario(View view);
 }
