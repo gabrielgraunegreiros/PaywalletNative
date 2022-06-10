@@ -47,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
         String contra=edtContra.getText().toString();
         Usuario user=daoUsuario.validarUsuario(us,contra);
         if(user!=null){
-            Intent intent=new Intent(this,ControllerRegistro.class);
+            Intent intent=new Intent(MainActivity.this,Home.class);
             startActivity(intent);
+            finish();
         }else{
             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
         }

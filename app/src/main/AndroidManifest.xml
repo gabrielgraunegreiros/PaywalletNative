@@ -11,8 +11,12 @@
         android:theme="@style/Theme.ProyectoMoviles">
         <activity
             android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
-            android:name=".controller.ControllerRegistro"
+            android:name=".controller.Home"
             android:exported="false" />
+        <activity
+            android:name=".controller.ControllerRegistro"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
         <activity
             android:name=".controller.MainActivity"
             android:exported="true"
