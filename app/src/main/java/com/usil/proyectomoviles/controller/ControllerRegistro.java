@@ -31,7 +31,6 @@ public class ControllerRegistro extends AppCompatActivity {
         setContentView(R.layout.lyt_registro);
         asignarReferencias();
         daoUsuario.openDB();
-        listarUsuarios();
     }
 
     private void asignarReferencias() {
@@ -41,7 +40,6 @@ public class ControllerRegistro extends AppCompatActivity {
         edtCorreo = findViewById(R.id.edtCorreo);
         edtContraseña = findViewById(R.id.edtContraseña);
         edtConfirmar = findViewById(R.id.edtConfirmar);
-        lstUsu = findViewById(R.id.lstUsuario);
     }
 
     public void registrarUsuario(View view){
@@ -60,16 +58,6 @@ public class ControllerRegistro extends AppCompatActivity {
         } else {
             Toast.makeText(ControllerRegistro.this,"Confirme la contraseña correctamente",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void listarUsuarios() {
-        listaUsu= daoUsuario.getUsuario();
-        List<String> lista = new ArrayList<>();
-        for (Usuario u: listaUsu){
-            lista.add("Nombre: "+u.getNombre()+"\nApellidos: "+u.getApellidos()+"\nCorreo: "+u.getCorreo()+"\nUsuario: "+u.getContrasena()+"\nContraseña: "+u.getContrasena()+"\n");
-        }
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lista);
-        lstUsu.setAdapter(adapter);
     }
 
     private void limpiar() {

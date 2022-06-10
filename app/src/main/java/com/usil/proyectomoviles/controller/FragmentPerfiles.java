@@ -1,5 +1,6 @@
 package com.usil.proyectomoviles.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +18,10 @@ import com.usil.proyectomoviles.R;
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.modelo.DAOUsuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class FragmentPerfiles extends Fragment {
+public class FragmentPerfiles extends Fragment{
     TextView txtUsuarioPerfil, txtNombrePerfil,txtApellidoPerfil;
     EditText edtEmailPerfil;
     Button btnModificarPerfil, btnEliminarPerfil;
@@ -57,6 +59,14 @@ public class FragmentPerfiles extends Fragment {
                 user.setCorreo(email);
                 daoUsuario.modificarDatos(user);
                 Toast.makeText(getActivity().getApplicationContext(), "Correo Modificado", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnEliminarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                daoUsuario.eliminarUsuario(user.getUsuario());
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
             }
         });
     }

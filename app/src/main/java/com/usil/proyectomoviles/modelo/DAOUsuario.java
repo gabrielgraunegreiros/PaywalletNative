@@ -62,7 +62,7 @@ public class DAOUsuario implements Serializable {
 
     public void eliminarUsuario(String usuario){
         try{
-            database.delete(ConstantesDB.NOMBRETABLA,"usuario="+usuario,null);
+            database.delete(ConstantesDB.NOMBRETABLA,"usuario LIKE '"+usuario+"'",null);
         } catch (Exception e){
 
         }
