@@ -67,6 +67,7 @@ public class FragmentPerfiles extends Fragment{
                 daoUsuario.eliminarUsuario(user.getUsuario());
                 Intent intent = new Intent(getActivity(),MainActivity.class);
                 startActivity(intent);
+                Toast.makeText(getActivity().getApplicationContext(),"Se eliminó tu cuenta",Toast.LENGTH_SHORT).show();
             }
         });
     }
