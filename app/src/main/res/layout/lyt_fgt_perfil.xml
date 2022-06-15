@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgFotoPerfil" />
 
     <TextView
         android:id="@+id/textView3"
@@ -95,7 +95,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgFotoPerfil" />
 
     <TextView
         android:id="@+id/txtNombrePerfil"
@@ -119,7 +119,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgFotoPerfil"
         android:layout_width="188dp"
         android:layout_height="189dp"
         android:layout_marginTop="28dp"
@@ -129,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/imagendeperfil"
-        app:srcCompat="@drawable/img_fgt_perfil_avatar_usuario"/>
+        app:srcCompat="@drawable/img_fgt_perfil_avatar_usuario" />
 
     <TextView
         android:id="@+id/txtApellidoPerfil"
@@ -141,7 +141,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/txtNombrePerfil" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

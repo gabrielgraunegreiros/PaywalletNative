@@ -23,7 +23,8 @@ import com.usil.proyectomoviles.modelo.DAOUsuario;
 public class Home extends AppCompatActivity{
     BottomNavigationView navegacionInferior;
     Usuario user;
-    FragmentPerfiles fragmentPerfiles;
+    FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

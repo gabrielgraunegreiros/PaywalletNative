@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.usil.proyectomoviles">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- Permiso para escribir en almacenamiento externo -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMoviles">
         <activity
-            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
-            android:name=".controller.Home"
+            android:name=".controller.CambiarPerfil"
             android:exported="false" />
+        <activity
+            android:name=".controller.Home"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
         <activity
             android:name=".controller.ControllerRegistro"
             android:exported="false"
