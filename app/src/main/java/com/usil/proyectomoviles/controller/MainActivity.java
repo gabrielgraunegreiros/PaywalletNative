@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ControllerRegistro.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -57,6 +58,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }
