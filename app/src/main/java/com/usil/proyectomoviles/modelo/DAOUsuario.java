@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.util.ConstantesDB;
@@ -39,7 +38,7 @@ public class DAOUsuario implements Serializable {
             contentValues.put("correo",u.getCorreo());
             contentValues.put("usuario",u.getUsuario());
             contentValues.put("contrasena",u.getContrasena());
-            database.insert(ConstantesDB.NOMBRETABLA,null,contentValues);
+            database.insert(ConstantesDB.TABLAUSUARIO,null,contentValues);
         }catch (Exception e){
 
         }
@@ -53,7 +52,7 @@ public class DAOUsuario implements Serializable {
             contentValues.put("correo",u.getCorreo());
             contentValues.put("usuario",u.getUsuario());
             contentValues.put("contrasena",u.getContrasena());
-            database.update(ConstantesDB.NOMBRETABLA,contentValues,"usuario LIKE '"+u.getUsuario()+"'",null);
+            database.update(ConstantesDB.TABLAUSUARIO,contentValues,"usuario LIKE '"+u.getUsuario()+"'",null);
             /*Otra forma es:
             database.update(ConstantesDB.NOMBRETABLA,contentValues,"id="+p.getId(),null);*/
         } catch (Exception e){
@@ -62,7 +61,7 @@ public class DAOUsuario implements Serializable {
 
     public void eliminarUsuario(String usuario){
         try{
-            database.delete(ConstantesDB.NOMBRETABLA,"usuario LIKE '"+usuario+"'",null);
+            database.delete(ConstantesDB.TABLAUSUARIO,"usuario LIKE '"+usuario+"'",null);
         } catch (Exception e){
 
         }
@@ -71,7 +70,7 @@ public class DAOUsuario implements Serializable {
     public ArrayList<Usuario> getUsuario(){
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         try {
-            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.NOMBRETABLA,null);
+            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.TABLAUSUARIO,null);
             while (c.moveToNext()){
                 listaUsu.add(new Usuario(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
             }
@@ -85,7 +84,7 @@ public class DAOUsuario implements Serializable {
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         Usuario user=null;
         try {
-            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.NOMBRETABLA,null);
+            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.TABLAUSUARIO,null);
             while (c.moveToNext()){
                 listaUsu.add(new Usuario(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
             }
@@ -104,7 +103,7 @@ public class DAOUsuario implements Serializable {
         Usuario user=null;
         ArrayList<Usuario> listaUsuarios=new ArrayList<>();
         try {
-            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.NOMBRETABLA,null);
+            Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.TABLAUSUARIO,null);
             while (c.moveToNext()){
                 listaUsuarios.add(new Usuario(c.getString(0),c.getString(1),c.getString(2),c.getString(3),c.getString(4)));
             }

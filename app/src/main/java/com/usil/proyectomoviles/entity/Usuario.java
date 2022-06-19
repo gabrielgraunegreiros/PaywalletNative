@@ -3,7 +3,7 @@ package com.usil.proyectomoviles.entity;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    String nombre,apellidos,correo, usuario, contrasena;
+    private String nombre,apellidos,correo, usuario, contrasena;
 
     public Usuario() {
 

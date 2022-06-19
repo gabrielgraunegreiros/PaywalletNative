@@ -29,7 +29,7 @@ public class FragmentPerfiles extends Fragment {
     EditText edtEmailPerfil;
     Button btnModificarPerfil, btnEliminarPerfil;
     ImageView imgFotoPerfil;
-    Usuario u;
+    Usuario user;
     DAOUsuario daoUsuario;
 
     @Nullable
@@ -53,8 +53,7 @@ public class FragmentPerfiles extends Fragment {
         btnEliminarPerfil = getView().findViewById(R.id.btnEliminarPerfil);
         imgFotoPerfil = getView().findViewById(R.id.imgFotoPerfil);
         Bundle bundle = getArguments();
-        u = (Usuario) bundle.getSerializable("user");
-        Usuario user = daoUsuario.getUser(u.getUsuario());
+        user = (Usuario) bundle.getSerializable("user");
         txtUsuarioPerfil.setText(user.getUsuario());
         txtNombrePerfil.setText(user.getNombre());
         txtApellidoPerfil.setText(user.getApellidos());
