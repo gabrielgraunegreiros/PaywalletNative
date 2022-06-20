@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,18 +19,16 @@ import com.usil.proyectomoviles.entity.Grupo;
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.modelo.DAOUsuario;
 
-import java.util.ArrayList;
-
-public class FragmentGrupo extends Fragment {
+public class FragmentRegistrar_Grupo extends Fragment {
     DAOUsuario daoUsuario;
+    EditText edtNombreGrupo;
+    Button btnCrearGrupo;
+    String nombreGrupo;
     Usuario user;
-
-    Button btnNuevoGrupo;
-    ListView lstGrupos;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.lyt_fgt_grupo,null);
+        View v=inflater.inflate(R.layout.lyt_fgt_registrar_grupo,null);
         return v;
     }
     @Override
@@ -38,26 +37,27 @@ public class FragmentGrupo extends Fragment {
         daoUsuario = new DAOUsuario(getActivity().getApplicationContext());
         daoUsuario.openDB();
         recuperarUsuario();
-        btnNuevoGrupo=getView().findViewById(R.id.btnFgtGrupo_NuevoGrupo);
-        lstGrupos=getView().findViewById(R.id.lstFgtGrupo_Grupos);
-        AdaptadorListaGrupos adaptadorListaGrupos=new AdaptadorListaGrupos(getActivity().getApplicationContext(), daoUsuario.getGrupos(user));
-        lstGrupos.setAdapter(adaptadorListaGrupos);
-        btnNuevoGrupo.setOnClickListener(new View.OnClickListener() {
+        edtNombreGrupo=getView().findViewById(R.id.edtFgtGrupo_RegistrarNombreGrupo);
+        btnCrearGrupo=getView().findViewById(R.id.btnFgtRegistrarGrupo_Crear);
+        btnCrearGrupo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentRegistrar_Grupo fgtRegistrar_Grupo=new FragmentRegistrar_Grupo();
+                nombreGrupo=edtNombreGrupo.getText().toString();
+                Grupo grupo=new Grupo(nombreGrupo);
+                daoUsuario.registrarGrupo(grupo,user);
+                FragmentGrupo fgtGrupo=new FragmentGrupo();
                 Bundle bundle=getActivity().getIntent().getExtras();
-                fgtRegistrar_Grupo.setArguments(bundle);
+                fgtGrupo.setArguments(bundle);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container,fgtRegistrar_Grupo)
+                        .replace(R.id.container,fgtGrupo)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                         .addToBackStack(null)
                         .commit();
+                Toast.makeText(getActivity().getApplicationContext(), "Grupo creado con éxito", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     private void recuperarUsuario() {
         Bundle bundle = getArguments();
         user = (Usuario) bundle.getSerializable("user");

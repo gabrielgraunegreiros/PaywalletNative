@@ -4,4 +4,10 @@
     <string name="Friends">Friends</string>
     <string name="Activity">Activity</string>
     <string name="Profile">Profile</string>
+    <string name="nuevo_grupo">Nuevo Grupo</string>
+    <string name="registrar_grupo">Registrar Grupo</string>
+    <string name="nombre_del_grupo">Nombre del Grupo:</string>
+    <string name="crear">Crear</string>
+    <string name="participantes">Participantes:</string>
+    <string name="imgadaplistgrupo_fotogrupo">imgAdapListGrupo_FotoGrupo</string>
 </resources>

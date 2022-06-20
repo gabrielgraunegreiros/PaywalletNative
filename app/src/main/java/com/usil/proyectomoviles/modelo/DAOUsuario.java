@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.usil.proyectomoviles.entity.Grupo;
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.util.ConstantesDB;
 import com.usil.proyectomoviles.util.DBPaywallet;
@@ -29,7 +30,7 @@ public class DAOUsuario implements Serializable {
         database.close();
     }
 
-
+    //------------Inicio algoritmos Usuario---------------
     public void registrarUsuario(Usuario u){
         try {
             ContentValues contentValues = new ContentValues();
@@ -117,4 +118,46 @@ public class DAOUsuario implements Serializable {
             return user;
         }
     }
+
+    //------------Fin algoritmos Usuario---------------
+    //------------Inicio algoritmos Grupo---------------
+    public void registrarGrupo(Grupo g, Usuario u){
+        try {
+            ContentValues contentValuesGrupo = new ContentValues();
+            contentValuesGrupo.put("nombreGrupo",g.getNombreGrupo());
+            database.insert(ConstantesDB.TABLAGRUPO,null,contentValuesGrupo);
+            //obtener el id del grupo creado recientemente, last_insert_rowid() devuelve devuelve el ROWID de la última fila insertada desde la conexión de la base de datos que invocó la función
+            int idG=0;
+            Cursor c = database.rawQuery("SELECT last_insert_rowid()",null);
+            while (c.moveToNext()){
+                idG=c.getInt(0);
+            }
+            //-----------------
+            ContentValues contentValuesGrupo_Usuario = new ContentValues();
+            contentValuesGrupo_Usuario.put("idGrupo",idG);
+            contentValuesGrupo_Usuario.put("idUsuario",u.getUsuario());
+
+            database.insert(ConstantesDB.TABLAGRUPO_USUARIO,null,contentValuesGrupo_Usuario);
+        }catch (Exception e){
+        }
+    }
+
+    public ArrayList<Grupo> getGrupos(Usuario u){
+        ArrayList<Grupo> listaGrupos=new ArrayList<>();
+        try {
+            String sql="SELECT TGU.idGrupo,TG.nombreGrupo from TGrupo_Usuario TGU " +
+                    "inner join TGrupo TG " +
+                    "on TG.id=TGU.idgrupo " +
+                    "where TGU.idUsuario " +
+                    "like '"+u.getUsuario()+"'";
+            Cursor c = database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                listaGrupos.add(new Grupo(c.getInt(0),c.getString(1)));
+            }
+            return listaGrupos;
+        }catch (Exception e){
+            return listaGrupos;
+        }
+    }
+    //------------Fin algoritmos Grupo---------------
 }
