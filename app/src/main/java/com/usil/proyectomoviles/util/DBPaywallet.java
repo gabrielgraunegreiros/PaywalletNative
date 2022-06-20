@@ -67,7 +67,8 @@ public class DBPaywallet extends SQLiteOpenHelper {
                                 "("+
                                 "id integer PRIMARY KEY AUTOINCREMENT,"+
                                 "monto real not null,"+
-                                "solicitudEstado text not null,"+
+                                "fecha text not null,"+
+                                "estado text not null,"+
                                 "idTipoActividad integer not null,"+
                                 "FOREIGN KEY(idTipoActividad) REFERENCES "+ConstantesDB.TABLATIPOACTIVIDAD+"(id)"+
                                 ");"
