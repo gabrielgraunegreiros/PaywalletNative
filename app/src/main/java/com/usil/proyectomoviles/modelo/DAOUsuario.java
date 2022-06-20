@@ -145,8 +145,8 @@ public class DAOUsuario implements Serializable {
     public ArrayList<Grupo> getGrupos(Usuario u){
         ArrayList<Grupo> listaGrupos=new ArrayList<>();
         try {
-            String sql="SELECT TGU.idGrupo,TG.nombreGrupo from TGrupo_Usuario TGU " +
-                    "inner join TGrupo TG " +
+            String sql="SELECT TGU.idGrupo,TG.nombreGrupo from "+ConstantesDB.TABLAGRUPO_USUARIO+" TGU " +
+                    "inner join "+ConstantesDB.TABLAGRUPO+" TG " +
                     "on TG.id=TGU.idgrupo " +
                     "where TGU.idUsuario " +
                     "like '"+u.getUsuario()+"'";
@@ -157,6 +157,19 @@ public class DAOUsuario implements Serializable {
             return listaGrupos;
         }catch (Exception e){
             return listaGrupos;
+        }
+    }
+    public Grupo getGrupo(int idGrupo){
+        Grupo grupo=null;
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLAGRUPO+ " where id="+idGrupo;
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                grupo=new Grupo(c.getInt(0), c.getString(1));
+            }
+            return grupo;
+        }catch (Exception e){
+            return grupo;
         }
     }
     //------------Fin algoritmos Grupo---------------
