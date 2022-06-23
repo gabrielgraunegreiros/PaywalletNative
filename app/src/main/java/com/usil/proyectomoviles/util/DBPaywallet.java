@@ -33,8 +33,8 @@ public class DBPaywallet extends SQLiteOpenHelper {
                         "CREATE TABLE "+ConstantesDB.TABLAGRUPO_USUARIO +""+
                                 "("+
                                 "id integer PRIMARY KEY AUTOINCREMENT,"+
-                                "idGrupo integer not null,"+
-                                "idUsuario integer not null,"+
+                                "idGrupo text not null,"+
+                                "idUsuario text not null,"+
                                 "FOREIGN KEY(idGrupo) REFERENCES "+ConstantesDB.TABLAGRUPO+"(id),"+
                                 "FOREIGN KEY(idUsuario) REFERENCES "+ConstantesDB.TABLAUSUARIO+"(usuario)"+
                                 ");"
@@ -45,8 +45,8 @@ public class DBPaywallet extends SQLiteOpenHelper {
                         "CREATE TABLE "+ConstantesDB.TABLAAMIGO +""+
                                 "("+
                                 "id integer PRIMARY KEY AUTOINCREMENT,"+
-                                "idUsuario1 integer not null,"+
-                                "idUsuario2 integer not null,"+
+                                "idUsuario1 text not null,"+
+                                "idUsuario2 text not null,"+
                                 "solicitudEstado text not null,"+
                                 "FOREIGN KEY(idUsuario1) REFERENCES "+ConstantesDB.TABLAUSUARIO+"(usuario),"+
                                 "FOREIGN KEY(idUsuario2) REFERENCES "+ConstantesDB.TABLAUSUARIO+"(usuario)"+
@@ -78,7 +78,7 @@ public class DBPaywallet extends SQLiteOpenHelper {
                         "CREATE TABLE "+ConstantesDB.TABLAUSER_ACTIVITY +""+
                                 "("+
                                 "id integer PRIMARY KEY AUTOINCREMENT,"+
-                                "idUsuario integer not null,"+
+                                "idUsuario text not null,"+
                                 "idActividad integer not null,"+
                                 "FOREIGN KEY(idUsuario) REFERENCES "+ConstantesDB.TABLAUSUARIO+"(usuario),"+
                                 "FOREIGN KEY(idActividad) REFERENCES "+ConstantesDB.TABLAACTIVIDAD+"(id)"+

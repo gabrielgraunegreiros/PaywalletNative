@@ -54,10 +54,11 @@ public class FragmentPerfiles extends Fragment {
         imgFotoPerfil = getView().findViewById(R.id.imgFotoPerfil);
         Bundle bundle = getArguments();
         user = (Usuario) bundle.getSerializable("user");
+        Usuario u=daoUsuario.getUser(user.getUsuario());
         txtUsuarioPerfil.setText(user.getUsuario());
         txtNombrePerfil.setText(user.getNombre());
         txtApellidoPerfil.setText(user.getApellidos());
-        edtEmailPerfil.setText(user.getCorreo());
+        edtEmailPerfil.setText(u.getCorreo());
         btnModificarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.usil.proyectomoviles.R;
 import com.usil.proyectomoviles.entity.Grupo;
+import com.usil.proyectomoviles.modelo.DAOUsuario;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class AdaptadorListaGrupos extends BaseAdapter {
     ArrayList<Grupo> listaGrupos;
     Context context;
     TextView txtNombreGrupo, txtCantUsuarios;
+    DAOUsuario daoUsuario;
 
     public AdaptadorListaGrupos(Context context, ArrayList<Grupo> listaGrupos) {
         this.listaGrupos = listaGrupos;
@@ -44,8 +46,11 @@ public class AdaptadorListaGrupos extends BaseAdapter {
         txtNombreGrupo=view.findViewById(R.id.txtAdapListGrupo_NombreGrupo);
         txtCantUsuarios=view.findViewById(R.id.txtAdapListGrupo_CantUsuarios);
 
+        daoUsuario = new DAOUsuario(view.getContext());
+        daoUsuario.openDB();
+
         txtNombreGrupo.setText(g.getNombreGrupo());
-        txtCantUsuarios.setText("Varios XD");
+        txtCantUsuarios.setText(daoUsuario.cantidadPersonasGrupo(g.getId())+"");
         return view;
     }
 }

@@ -40,9 +40,9 @@ public class FragmentMostrar_Grupo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         daoUsuario = new DAOUsuario(getActivity().getApplicationContext());
-
         daoUsuario.openDB();
         recuperarUsuario();
+
         int idGrupo =  bundle.getInt("idGrupo");
 
         txtNombreGrupo=getView().findViewById(R.id.txtFgtMostrarGrupo_NombreGrupo);

@@ -119,7 +119,20 @@ public class DAOUsuario implements Serializable {
             return user;
         }
     }
-
+    public boolean existeUsuario(String idUsuario){
+        //validar que el usuario existe en la bd
+        boolean estado=false;
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLAUSUARIO+" where usuario like '"+idUsuario+"'";
+            Cursor c=database.rawQuery(sql,null);
+            if((c != null) && (c.getCount() > 0)){
+                estado=true;
+            }
+            return estado;
+        }catch (Exception e){
+            return estado;
+        }
+    }
     //------------Fin algoritmos Usuario---------------
     //------------Inicio algoritmos Grupo---------------
     public void registrarGrupo(Grupo g, Usuario u){
@@ -189,5 +202,52 @@ public class DAOUsuario implements Serializable {
         }catch (Exception e){
         }
     }
+    public int cantidadPersonasGrupo(int idGrupo){
+        int cant=0;
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLAGRUPO_USUARIO+ " where id="+idGrupo;
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                cant+=1;
+            }
+            return cant;
+        }catch (Exception e){
+            return cant;
+        }
+    }
     //------------Fin algoritmos Grupo---------------
+    //--------------Inicio algoritmos Amigos-----------
+    public void agregarAmigo(String idAmigo1, String idAmigo2){
+        /*
+        idAmigo1: Envia la solicitud
+        idAmigo2: Recibe la solicitud
+        Solicitud: Pendiente (Falta confirmar amigo)
+        */
+        try {
+            ContentValues contentValuesAmigos = new ContentValues();
+            contentValuesAmigos.put("idUsuario1",idAmigo1);
+            contentValuesAmigos.put("idUsuario2",idAmigo2);
+            contentValuesAmigos.put("solicitudEstado","Pendiente");
+            database.insert(ConstantesDB.TABLAAMIGO,null,contentValuesAmigos);
+        }catch (Exception e){
+
+        }
+    }
+
+    public ArrayList<Usuario> getSolicitudesAmistad(String idUsuario){
+        //Obtener todas las solicitudes en estado "Pendiente" del "idUsuario" (usuario logeado)
+        ArrayList<Usuario> listaUsuarios=new ArrayList<>();
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario2 like '"+idUsuario+"'"+" AND solicitudEstado like 'Pendiente'";
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                listaUsuarios.add( getUser(c.getString(1)));
+            }
+            return listaUsuarios;
+        }catch (Exception e){
+            return listaUsuarios;
+        }
+    }
+
+    //--------------Fin algoritmos Amigos-----------
 }

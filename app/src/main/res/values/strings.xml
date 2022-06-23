@@ -11,4 +11,13 @@
     <string name="participantes">Participantes:</string>
     <string name="imgadaplistgrupo_fotogrupo">imgAdapListGrupo_FotoGrupo</string>
     <string name="eliminar_grupo">Eliminar Grupo</string>
+    <string name="mis_amigos">Mis amigos</string>
+    <string name="amigos">Amigos</string>
+    <string name="agregar_amigo">Agregar Amigo</string>
+    <string name="solicitudes">Solicitudes</string>
+    <string name="nombre_de_usuario">Nombre de Usuario</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="rechazar">Rechazar</string>
+    <string name="nombre_completo">Nombre Completo</string>
+    <string name="todo">TODO</string>
 </resources>

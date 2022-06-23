@@ -5,13 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/btnFgtAmigos_MisAmigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/mis_amigos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnFgtAmigos_SolicitudAmigo"
+        app:layout_constraintTop_toBottomOf="@+id/btnFgtAmigos_AddAmigo" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:text="Amigos"
+        android:text="@string/amigos"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +33,33 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="16dp"
-        android:text="Agregar Amigo"
+        android:text="@string/agregar_amigo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFgtAmigos_SolicitudAmigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/solicitudes"
+        app:layout_constraintEnd_toStartOf="@+id/btnFgtAmigos_MisAmigos"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFgtAmigos_AddAmigo" />
+
+    <FrameLayout
+        android:id="@+id/ContainerFgtAmigos"
+        android:layout_width="409dp"
+        android:layout_height="586dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFgtAmigos_MisAmigos">
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
