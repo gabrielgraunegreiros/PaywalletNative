@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.usil.proyectomoviles.entity.Grupo;
 import com.usil.proyectomoviles.entity.Usuario;
@@ -170,6 +171,22 @@ public class DAOUsuario implements Serializable {
             return grupo;
         }catch (Exception e){
             return grupo;
+        }
+    }
+    public void eliminarGrupo(int idGrupo, Usuario u){
+        try{
+            database.delete(ConstantesDB.TABLAGRUPO,"id="+idGrupo,null);
+            database.delete(ConstantesDB.TABLAGRUPO_USUARIO,"idGrupo="+idGrupo+" AND idUsuario like '"+u.getUsuario()+"'",null);
+        } catch (Exception e){
+
+        }
+    }
+    public void cambiarNombreGrupo(int idGrupo, String nombreG){
+        try {
+            ContentValues grupo = new ContentValues();
+            grupo.put("nombreGrupo",nombreG);
+            database.update(ConstantesDB.TABLAGRUPO,grupo,"id="+idGrupo,null);
+        }catch (Exception e){
         }
     }
     //------------Fin algoritmos Grupo---------------

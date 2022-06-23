@@ -10,4 +10,5 @@
     <string name="crear">Crear</string>
     <string name="participantes">Participantes:</string>
     <string name="imgadaplistgrupo_fotogrupo">imgAdapListGrupo_FotoGrupo</string>
+    <string name="eliminar_grupo">Eliminar Grupo</string>
 </resources>
