@@ -15,14 +15,17 @@
             android:exported="false" />
         <activity
             android:name=".controller.Home"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"
             android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
         <activity
             android:name=".controller.ControllerRegistro"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"
             android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
         <activity
             android:name=".controller.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true"
             android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar">
             <intent-filter>

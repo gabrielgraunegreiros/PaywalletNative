@@ -56,8 +56,7 @@ public class FragmentAmigos extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(daoUsuario.existeUsuario(edtNuevoAmigo.getText().toString())){
-                            daoUsuario.agregarAmigo(user.getUsuario(),edtNuevoAmigo.getText().toString());
-                            Toast.makeText(getActivity().getApplicationContext(), "Se mando la solicitud a: "+edtNuevoAmigo.getText().toString(), Toast.LENGTH_SHORT).show();
+                            daoUsuario.agregarAmigo(user.getUsuario(),edtNuevoAmigo.getText().toString(), getActivity().getApplicationContext());
                         }else{
                             Toast.makeText(getActivity().getApplicationContext(), "Usuario no existente", Toast.LENGTH_SHORT).show();
                         }

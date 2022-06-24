@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txtAdapLIstSoli_NombreCompleto"
+        android:id="@+id/txtAdapListSoli_NombreCompleto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="9dp"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toEndOf="@+id/imgAdapListSoli_fotoUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/txtAdapLIstSoli_NombreUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapListSoli_NombreUsuario" />
 
     <ImageView
         android:id="@+id/imgAdapListSoli_fotoUsuario"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView12"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imgAdapListSoli_fotoUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/txtAdapLIstSoli_NombreCompleto"
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapListSoli_NombreCompleto"
         app:srcCompat="@drawable/accep_friend"
         tools:ignore="ImageContrastCheck" />
 
@@ -52,7 +52,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView13"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/txtAdapLIstSoli_NombreCompleto"
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapListSoli_NombreCompleto"
         app:srcCompat="@drawable/cancel_friend" />
 
     <TextView
@@ -65,7 +65,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/txtAdapLIstSoli_NombreCompleto" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapListSoli_NombreCompleto" />
 
     <TextView
         android:id="@+id/textView13"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/txtAdapLIstSoli_NombreCompleto" />
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapListSoli_NombreCompleto" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/groupAceptar"
@@ -92,7 +92,7 @@
         app:constraint_referenced_ids="textView13" />
 
     <TextView
-        android:id="@+id/txtAdapLIstSoli_NombreUsuario"
+        android:id="@+id/txtAdapListSoli_NombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

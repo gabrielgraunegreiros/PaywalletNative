@@ -1,6 +1,5 @@
 package com.usil.proyectomoviles.controller;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +46,8 @@ public class Fragment_Mostrar_Solicitud_Amigos extends Fragment {
         }
         AdaptadorListaSolicitudes adaptadorListaSolicitudes=new AdaptadorListaSolicitudes(getActivity().getApplicationContext(), listaSolicitudes);
         lstSolicitudes.setAdapter(adaptadorListaSolicitudes);
+        adaptadorListaSolicitudes.enviarUser(user.getUsuario());
+        adaptadorListaSolicitudes.notifyDataSetChanged();
     }
     private void recuperarUsuario() {
         bundle = getArguments();

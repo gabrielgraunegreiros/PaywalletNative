@@ -11,17 +11,16 @@ import android.widget.Toast;
 import androidx.constraintlayout.widget.Group;
 
 import com.usil.proyectomoviles.R;
-import com.usil.proyectomoviles.entity.Grupo;
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.modelo.DAOUsuario;
 
 import java.util.ArrayList;
 
 public class AdaptadorListaSolicitudes extends BaseAdapter {
-    ArrayList<Usuario> listaSolicitudes=new ArrayList<>();
+    ArrayList<Usuario> listaSolicitudes;
     Context context;
     DAOUsuario daoUsuario;
-
+    String user;
     TextView txtNombreUsuario, txtNombreCompleto;
     Group gpAceptarSoli,gpRechazarSoli;
     public AdaptadorListaSolicitudes(Context context, ArrayList<Usuario> listaSolicitudes) {
@@ -51,8 +50,8 @@ public class AdaptadorListaSolicitudes extends BaseAdapter {
         daoUsuario.openDB();
         final Usuario u=listaSolicitudes.get(i);
 
-        txtNombreUsuario=view.findViewById(R.id.txtAdapLIstSoli_NombreUsuario);
-        txtNombreCompleto=view.findViewById(R.id.txtAdapLIstSoli_NombreCompleto);
+        txtNombreUsuario=view.findViewById(R.id.txtAdapListSoli_NombreUsuario);
+        txtNombreCompleto=view.findViewById(R.id.txtAdapListSoli_NombreCompleto);
         gpAceptarSoli=view.findViewById(R.id.groupAceptar);
         gpRechazarSoli=view.findViewById(R.id.groupRechazar);
 
@@ -63,11 +62,20 @@ public class AdaptadorListaSolicitudes extends BaseAdapter {
             view.findViewById(id).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    daoUsuario.aceptarAmigo(u.getUsuario(),user);
+                    setNuevosDatos(daoUsuario.getSolicitudesAmistad(user));
                     Toast.makeText(context, "Se agrego al usuario "+u.getUsuario(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
         return view;
+    }
+    public void enviarUser(String u){
+        //u: representa el usuario logeado
+        user=u;
+    }
+    public void setNuevosDatos(ArrayList<Usuario> newListaSolicitudes){
+        this.listaSolicitudes=newListaSolicitudes;
+        notifyDataSetChanged();
     }
 }

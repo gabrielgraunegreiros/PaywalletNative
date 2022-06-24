@@ -217,18 +217,27 @@ public class DAOUsuario implements Serializable {
     }
     //------------Fin algoritmos Grupo---------------
     //--------------Inicio algoritmos Amigos-----------
-    public void agregarAmigo(String idAmigo1, String idAmigo2){
+    public void agregarAmigo(String idAmigo1, String idAmigo2, Context context){
         /*
         idAmigo1: Envia la solicitud
         idAmigo2: Recibe la solicitud
         Solicitud: Pendiente (Falta confirmar amigo)
+                    Confirmado (Ya son amigos)
         */
+            //Si estado es false, no existe registro de que u1 y u2 son amigos, caso contrario, si lo son o esta "Pendiente"
+
+        boolean estado=validarSolicitud(idAmigo1,idAmigo2);
         try {
-            ContentValues contentValuesAmigos = new ContentValues();
-            contentValuesAmigos.put("idUsuario1",idAmigo1);
-            contentValuesAmigos.put("idUsuario2",idAmigo2);
-            contentValuesAmigos.put("solicitudEstado","Pendiente");
-            database.insert(ConstantesDB.TABLAAMIGO,null,contentValuesAmigos);
+            if(estado){
+                Toast.makeText(context, "Amigo ya agregado", Toast.LENGTH_SHORT).show();
+            }else{
+                ContentValues contentValuesAmigos = new ContentValues();
+                contentValuesAmigos.put("idUsuario1",idAmigo1);
+                contentValuesAmigos.put("idUsuario2",idAmigo2);
+                contentValuesAmigos.put("solicitudEstado","Pendiente");
+                database.insert(ConstantesDB.TABLAAMIGO,null,contentValuesAmigos);
+                Toast.makeText(context, "Se mando la solicitud a "+idAmigo2, Toast.LENGTH_SHORT).show();
+            }
         }catch (Exception e){
 
         }
@@ -248,6 +257,61 @@ public class DAOUsuario implements Serializable {
             return listaUsuarios;
         }
     }
+    public void aceptarAmigo(String userAmigo1,String userAmigo2){
+        /*
+        userAmigo1: Envia la solicitud
+        userAmigo2: Recibe la solicitud
+        Solicitud: Pendiente (Falta confirmar amigo)
+                    Confirmado (Ya son amigos)
+         */
+        try {
+            ContentValues amigo = new ContentValues();
+            amigo.put("solicitudEstado","Confirmado");
+            database.update(ConstantesDB.TABLAAMIGO,amigo,"idUsuario1 like '"+userAmigo1+"' AND idUsuario2 like '"+userAmigo2+"'",null);
+        }catch (Exception e){
+
+        }
+    }
+    public boolean validarSolicitud(String u1, String u2){
+        //Si estado es false, no existe registro de que u1 y u2 son amigos, caso contrario, si lo son o esta "Pendiente"
+        boolean estado=false;
+        try {
+            String sql1="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario1 like '"+u1+"' AND idUsuario2 like '"+u2+"'";
+            String sql2="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario1 like '"+u2+"' AND idUsuario2 like '"+u1+"'";
+            Cursor c=database.rawQuery(sql1,null);
+            Cursor c2=database.rawQuery(sql2,null);
+            if((c != null) && (c.getCount() > 0)){
+                estado=true;
+            }
+            if((c2 != null) && (c2.getCount() > 0)){
+                estado=true;
+            }
+            return estado;
+        }catch (Exception e){
+            return estado;
+        }
+    }
+    public ArrayList<Usuario> misAmigos(String idUsuario){
+        //devuelve un arreglo de todos los usurios en estado Confirmado de "idUsuario" (usuario logeado)
+        ArrayList<Usuario> listaAmigos=new ArrayList<>();
+        try {
+            String sql1="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario1 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
+            String sql2="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario2 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
+            Cursor cur1=database.rawQuery(sql1,null);
+            Cursor cur2=database.rawQuery(sql2,null);
+            while(cur1.moveToNext()){
+                listaAmigos.add( getUser(cur1.getString(2)));
+            }
+            while(cur2.moveToNext()){
+                listaAmigos.add( getUser(cur2.getString(1)));
+            }
+            return listaAmigos;
+        }catch (Exception e){
+            return listaAmigos;
+        }
+    }
 
     //--------------Fin algoritmos Amigos-----------
+
+
 }
