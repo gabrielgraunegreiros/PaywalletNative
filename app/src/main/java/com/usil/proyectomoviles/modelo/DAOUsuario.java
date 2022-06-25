@@ -121,7 +121,9 @@ public class DAOUsuario implements Serializable {
         }
     }
     public boolean existeUsuario(String idUsuario){
-        //validar que el usuario existe en la bd
+        //validar que el usuario existe en la bd,
+        // si estado=false(no existe usuario en la BD)
+        // si estado=True(usuario existe en la bd)
         boolean estado=false;
         try {
             String sql="SELECT * FROM "+ConstantesDB.TABLAUSUARIO+" where usuario like '"+idUsuario+"'";
@@ -135,7 +137,7 @@ public class DAOUsuario implements Serializable {
         }
     }
     //------------Fin algoritmos Usuario---------------
-    //------------Inicio algoritmos Grupo---------------
+    //------------Inicio algoritmos Grupo y Grupo_Usuario---------------
     public void registrarGrupo(Grupo g, Usuario u){
         try {
             ContentValues contentValuesGrupo = new ContentValues();
@@ -203,17 +205,31 @@ public class DAOUsuario implements Serializable {
         }catch (Exception e){
         }
     }
-    public int cantidadPersonasGrupo(int idGrupo){
-        int cant=0;
+
+    public ArrayList<Usuario> getUsuarios_de_Grupo(int idGrupo){
+        //Devuelve un arreglo con los usuarios que se encuentran dentro del grupo con el id ="idGrupo"
+        ArrayList<Usuario> listaUser_Grupo=new ArrayList<>();
         try {
-            String sql="SELECT * FROM "+ConstantesDB.TABLAGRUPO_USUARIO+ " where id="+idGrupo;
+            String sql="SELECT * FROM "+ConstantesDB.TABLAGRUPO_USUARIO+ " where idGrupo="+idGrupo;
             Cursor c=database.rawQuery(sql,null);
             while (c.moveToNext()){
-                cant+=1;
+                listaUser_Grupo.add(getUser(c.getString(2)));
             }
-            return cant;
+            return listaUser_Grupo;
         }catch (Exception e){
-            return cant;
+            return listaUser_Grupo;
+        }
+    }
+
+    public void añadirParticipanteGrupo(int idGrupo, String idUser){
+        //agrega el usuario "idUser" al grupo cuyo id es "idGrupo"
+        try {
+            ContentValues contGrupo_Usuario = new ContentValues();
+            contGrupo_Usuario.put("idGrupo",idGrupo);
+            contGrupo_Usuario.put("idUsuario",idUser);
+            database.insert(ConstantesDB.TABLAGRUPO_USUARIO,null,contGrupo_Usuario);
+        }catch (Exception e){
+
         }
     }
     //------------Fin algoritmos Grupo---------------

@@ -27,4 +27,6 @@
     <string name="ingrese_el_usuario">Ingrese el usuario</string>
     <string name="monto">Monto</string>
     <string name="tipo_actividad">TIpo Actividad</string>
+    <string name="a_adir_usuario">añadir usuario</string>
+    <string name="cambiar_nombre">Cambiar nombre</string>
 </resources>

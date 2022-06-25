@@ -50,7 +50,7 @@ public class AdaptadorListaGrupos extends BaseAdapter {
         daoUsuario.openDB();
 
         txtNombreGrupo.setText(g.getNombreGrupo());
-        txtCantUsuarios.setText(daoUsuario.cantidadPersonasGrupo(g.getId())+"");
+        txtCantUsuarios.setText(daoUsuario.getUsuarios_de_Grupo(g.getId()).size()+"");
         return view;
     }
 }

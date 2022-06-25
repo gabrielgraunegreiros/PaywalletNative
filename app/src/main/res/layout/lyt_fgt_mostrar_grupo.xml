@@ -3,41 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="673dp">
-
-    <TextView
-        android:id="@+id/txtFgtMostrarGrupo_NombreGrupo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nombre_del_grupo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btnFgtMostrarGrupo_EliminarGrupo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="263dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="@string/eliminar_grupo"
 
+        android:text="@string/eliminar_grupo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lstFgtMostrarGrupo_MostrarParticipantes" />
+
+    <Button
+        android:id="@+id/btnFgtMostrarGrupo_AñadirParticipante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/a_adir_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnFgtMostrarGrupo_CambiarNombre"
         app:layout_constraintTop_toBottomOf="@+id/txtFgtMostrarGrupo_NombreGrupo" />
 
     <Button
         android:id="@+id/btnFgtMostrarGrupo_CambiarNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="26dp"
-        android:text="Cambiar nombre"
+        android:layout_marginTop="20dp"
+        android:text="@string/cambiar_nombre"
+        app:layout_constraintEnd_toStartOf="@+id/btnFgtMostrarGrupo_AñadirParticipante"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtFgtMostrarGrupo_NombreGrupo" />
+
+    <TextView
+        android:id="@+id/txtFgtMostrarGrupo_NombreGrupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="@string/nombre_del_grupo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/lstFgtMostrarGrupo_MostrarParticipantes"
+        android:layout_width="413dp"
+        android:layout_height="547dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFgtMostrarGrupo_CambiarNombre" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

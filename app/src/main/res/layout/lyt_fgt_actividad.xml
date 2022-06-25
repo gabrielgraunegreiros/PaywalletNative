@@ -20,8 +20,8 @@
         android:id="@+id/btnFgtActividad_AgregarGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="@string/agregar_gasto"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
     <ListView
         android:id="@+id/lstFgtActividad_MiActividad"
         android:layout_width="409dp"
-        android:layout_height="580dp"
+        android:layout_height="630dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
