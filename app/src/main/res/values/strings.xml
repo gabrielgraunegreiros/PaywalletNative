@@ -20,4 +20,11 @@
     <string name="rechazar">Rechazar</string>
     <string name="nombre_completo">Nombre Completo</string>
     <string name="todo">TODO</string>
+    <string name="mi_actividad">Mi Actividad</string>
+    <string name="agregar_gasto">Agregar Gasto</string>
+    <string name="guardar">Guardar</string>
+    <string name="ingrese_el_monto">Ingrese el monto</string>
+    <string name="ingrese_el_usuario">Ingrese el usuario</string>
+    <string name="monto">Monto</string>
+    <string name="tipo_actividad">TIpo Actividad</string>
 </resources>

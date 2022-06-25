@@ -3,21 +3,25 @@ package com.usil.proyectomoviles.entity;
 public class Actividad {
     private int id;
     private double monto;
-    private String solicitudEstado;
+    private String fecha;
+    private String idUsuarioGasto;
+    private String estado;
     private int idTipoActividad;
 
     public Actividad(){}
 
-    public Actividad(int id, double monto, String solicitudEstado, int idTipoActividad) {
+    public Actividad(int id, double monto, String fecha,String idUsuarioGasto, String estado, int idTipoActividad) {
         this.id = id;
         this.monto = monto;
-        this.solicitudEstado = solicitudEstado;
+        this.fecha=fecha;
+        this.idUsuarioGasto=idUsuarioGasto;
+        this.estado = estado;
         this.idTipoActividad = idTipoActividad;
     }
 
-    public Actividad(double monto, String solicitudEstado, int idTipoActividad) {
+    public Actividad(double monto, String estado, int idTipoActividad) {
         this.monto = monto;
-        this.solicitudEstado = solicitudEstado;
+        this.estado = estado;
         this.idTipoActividad = idTipoActividad;
     }
     public int getId() {
@@ -35,12 +39,28 @@ public class Actividad {
         this.monto = monto;
     }
 
-    public String getSolicitudEstado() {
-        return solicitudEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setSolicitudEstado(String solicitudEstado) {
-        this.solicitudEstado = solicitudEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getIdUsuarioGasto() {
+        return idUsuarioGasto;
+    }
+
+    public void setIdUsuarioGasto(String idUsuarioGasto) {
+        this.idUsuarioGasto = idUsuarioGasto;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public int getIdTipoActividad() {

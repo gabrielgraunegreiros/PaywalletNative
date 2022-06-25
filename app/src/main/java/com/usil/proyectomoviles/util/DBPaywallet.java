@@ -68,6 +68,7 @@ public class DBPaywallet extends SQLiteOpenHelper {
                                 "id integer PRIMARY KEY AUTOINCREMENT,"+
                                 "monto real not null,"+
                                 "fecha text not null,"+
+                                "idUsuarioGasto text not null,"+
                                 "estado text not null,"+
                                 "idTipoActividad integer not null,"+
                                 "FOREIGN KEY(idTipoActividad) REFERENCES "+ConstantesDB.TABLATIPOACTIVIDAD+"(id)"+
@@ -87,11 +88,11 @@ public class DBPaywallet extends SQLiteOpenHelper {
         //Insercion valores predeterminados
         sqLiteDatabase.execSQL
                 (
-                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('debes');"
+                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Debes');"
                 );
         sqLiteDatabase.execSQL
                 (
-                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('te debe');"
+                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Te debe');"
                 );
 
 

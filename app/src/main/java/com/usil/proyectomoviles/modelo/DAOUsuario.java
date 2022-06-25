@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.usil.proyectomoviles.entity.Actividad;
 import com.usil.proyectomoviles.entity.Grupo;
 import com.usil.proyectomoviles.entity.Usuario;
 import com.usil.proyectomoviles.util.ConstantesDB;
@@ -224,7 +225,7 @@ public class DAOUsuario implements Serializable {
         Solicitud: Pendiente (Falta confirmar amigo)
                     Confirmado (Ya son amigos)
         */
-            //Si estado es false, no existe registro de que u1 y u2 son amigos, caso contrario, si lo son o esta "Pendiente"
+            //Si estado es false, no existe registro de que idAmigo1 y idAmigo2 son amigos; caso contrario, si lo son o esta "Pendiente"
 
         boolean estado=validarSolicitud(idAmigo1,idAmigo2);
         try {
@@ -310,8 +311,132 @@ public class DAOUsuario implements Serializable {
             return listaAmigos;
         }
     }
-
     //--------------Fin algoritmos Amigos-----------
 
+    //-----------Inicio algoritmos User_Activity-----------
+    public ArrayList<Integer> getIdMiActividad(String usuario){
+        //Devuelve un arreglo con los ids de las actividades del "usuario" logeado obtenidos de la tabla TUser_Activity
+        ArrayList<Integer> listaIdsMiActividad=new ArrayList<>();
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLAUSER_ACTIVITY+" where idUsuario like '"+usuario+"'";
+            Cursor cursor=database.rawQuery(sql,null);
+            while (cursor.moveToNext()){
+                listaIdsMiActividad.add(cursor.getInt(2));
+            }
+            return listaIdsMiActividad;
+        }catch (Exception e){
+            return listaIdsMiActividad;
+        }
+    }
+    //-----------Fin algoritmos User_Activity-----------
 
+    //--------------Inicio algoritmos Actividad---------
+
+    public void agregarActividad(double monto, String fecha,String idUsuarioGasto, int idTipoActividad, String userLog){
+        int idActividad=0;
+        try {
+            ContentValues contActividad_User_Registra = new ContentValues();
+            contActividad_User_Registra.put("monto",monto);
+            contActividad_User_Registra.put("fecha",fecha);
+            contActividad_User_Registra.put("idUsuarioGasto",idUsuarioGasto);
+            contActividad_User_Registra.put("estado","Pendiente");
+            contActividad_User_Registra.put("idTipoActividad",idTipoActividad);
+            database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Registra);
+            Cursor c = database.rawQuery("SELECT last_insert_rowid()",null);
+            while (c.moveToNext()){
+                idActividad=c.getInt(0);
+            }
+            ContentValues contUser_Registra=new ContentValues();
+            contUser_Registra.put("idUsuario", userLog);
+            contUser_Registra.put("idActividad", idActividad);
+            database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Registra);
+
+            if(idTipoActividad==1){
+                idTipoActividad=2;
+            }else{
+                idTipoActividad=1;
+            }
+            ContentValues contActividad_User_Gasto = new ContentValues();
+            contActividad_User_Gasto.put("monto",monto);
+            contActividad_User_Gasto.put("fecha",fecha);
+            contActividad_User_Gasto.put("idUsuarioGasto",userLog);
+            contActividad_User_Gasto.put("estado","Pendiente");
+            contActividad_User_Gasto.put("idTipoActividad",idTipoActividad);
+            database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Gasto);
+            Cursor cursor = database.rawQuery("SELECT last_insert_rowid()",null);
+            while (cursor.moveToNext()){
+                idActividad=cursor.getInt(0);
+            }
+            ContentValues contUser_Gasto=new ContentValues();
+            contUser_Gasto.put("idUsuario", idUsuarioGasto);
+            contUser_Gasto.put("idActividad", idActividad);
+            database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Gasto);
+
+        }catch (Exception e){
+
+        }
+    }
+    public ArrayList<Actividad> getMiActividad(String idUsuario){
+        ArrayList<Actividad> listaMiActividad=new ArrayList<>();
+        ArrayList<Integer> listaIdsActividad=getIdMiActividad(idUsuario);
+        String sql;
+        try {
+            for (int i = 0; i < listaIdsActividad.size(); i++) {
+                sql="SELECT * FROM "+ConstantesDB.TABLAACTIVIDAD+" where id="+listaIdsActividad.get(i);
+                Cursor cur=database.rawQuery(sql,null);
+                while (cur.moveToNext()){
+                    listaMiActividad.add(new Actividad(cur.getInt(0),cur.getDouble(1),cur.getString(2),cur.getString(3),cur.getString(4),cur.getInt(5)));
+                }
+            }
+            return listaMiActividad;
+        }catch (Exception e){
+            return listaMiActividad;
+        }
+    }
+
+    //--------------Fin algoritmos Actividad---------
+    //--------------Inicio algoritmos Tipo_Actividad---------
+    public ArrayList<String> getTipoActividad(){
+        //devuelve los datos de la tabla TipoActividad
+        ArrayList<String> listaTipoActividad=new ArrayList<>();
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLATIPOACTIVIDAD;
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                listaTipoActividad.add(c.getString(1));
+            }
+            return listaTipoActividad;
+        }catch (Exception e){
+            return listaTipoActividad;
+        }
+    }
+    public String getDescripTipoActividad(int idTipoAct){
+        String des=null;
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLATIPOACTIVIDAD+" where id="+idTipoAct;
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                des=c.getString(1);
+            }
+            return des;
+        }catch (Exception e){
+            return des;
+        }
+    }
+    public ArrayList<Integer> getIdTipoActividad(){
+        //devuelve los datos de la tabla TipoActividad
+        ArrayList<Integer> listaIdTipoActividad=new ArrayList<>();
+        try {
+            String sql="SELECT * FROM "+ConstantesDB.TABLATIPOACTIVIDAD;
+            Cursor c=database.rawQuery(sql,null);
+            while (c.moveToNext()){
+                listaIdTipoActividad.add(c.getInt(0));
+            }
+            return listaIdTipoActividad;
+        }catch (Exception e){
+            return listaIdTipoActividad;
+        }
+    }
+
+    //--------------Fin algoritmos Tipo_Actividad---------
 }
