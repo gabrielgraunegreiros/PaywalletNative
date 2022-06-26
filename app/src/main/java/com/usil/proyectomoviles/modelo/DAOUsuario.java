@@ -71,6 +71,7 @@ public class DAOUsuario implements Serializable {
     }
 
     public ArrayList<Usuario> getUsuario(){
+        //devuelve un arreglo con todos los usuarios registrados en la BD
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         try {
             Cursor c = database.rawQuery("SELECT * FROM " + ConstantesDB.TABLAUSUARIO,null);
@@ -84,6 +85,8 @@ public class DAOUsuario implements Serializable {
     }
 
     public Usuario validarUsuario(String us, String contra){
+        //devuelve el objeto Usuario con DATOS, si encuentra su usario "us" y contraseña "contra"
+        //en caso no lo encuentre, devuelve el objeto usuario NULO
         ArrayList<Usuario> listaUsu = new ArrayList<>();
         Usuario user=null;
         try {
@@ -103,6 +106,7 @@ public class DAOUsuario implements Serializable {
     }
 
     public Usuario getUser(String us){
+        //Devuelve el objeto Usuario con todos sus datos en base al parametro usuario "us"
         Usuario user=null;
         ArrayList<Usuario> listaUsuarios=new ArrayList<>();
         try {
@@ -139,7 +143,9 @@ public class DAOUsuario implements Serializable {
     //------------Fin algoritmos Usuario---------------
     //------------Inicio algoritmos Grupo y Grupo_Usuario---------------
     public void registrarGrupo(Grupo g, Usuario u){
+        //se registrar un nuevo grupo con el creados en las tablas TGrupo, y TGrupo_Usuario, respectivamente
         try {
+            //Se registra un nuevo grupo en la bd en la tabla TGrupo
             ContentValues contentValuesGrupo = new ContentValues();
             contentValuesGrupo.put("nombreGrupo",g.getNombreGrupo());
             database.insert(ConstantesDB.TABLAGRUPO,null,contentValuesGrupo);
@@ -150,6 +156,7 @@ public class DAOUsuario implements Serializable {
                 idG=c.getInt(0);
             }
             //-----------------
+            //Se asocia el grupo creado anteriormente con el usuario que lo creo
             ContentValues contentValuesGrupo_Usuario = new ContentValues();
             contentValuesGrupo_Usuario.put("idGrupo",idG);
             contentValuesGrupo_Usuario.put("idUsuario",u.getUsuario());
@@ -160,6 +167,7 @@ public class DAOUsuario implements Serializable {
     }
 
     public ArrayList<Grupo> getGrupos(Usuario u){
+        //devuelve un arreglo de tipo GRUPO con todos los grupos en los que se encuentra el usuario "u"
         ArrayList<Grupo> listaGrupos=new ArrayList<>();
         try {
             String sql="SELECT TGU.idGrupo,TG.nombreGrupo from "+ConstantesDB.TABLAGRUPO_USUARIO+" TGU " +
@@ -177,6 +185,7 @@ public class DAOUsuario implements Serializable {
         }
     }
     public Grupo getGrupo(int idGrupo){
+        //devuelve el objeto Grupo con todos sus datos, tomando como parametro su id "idGrupo"
         Grupo grupo=null;
         try {
             String sql="SELECT * FROM "+ConstantesDB.TABLAGRUPO+ " where id="+idGrupo;
@@ -190,6 +199,8 @@ public class DAOUsuario implements Serializable {
         }
     }
     public void eliminarGrupo(int idGrupo, Usuario u){
+        //Falta realizar validaciones
+        //Elimina el grupo con id "idGrupo" y la relacion con su creador con el usuario "u"
         try{
             database.delete(ConstantesDB.TABLAGRUPO,"id="+idGrupo,null);
             database.delete(ConstantesDB.TABLAGRUPO_USUARIO,"idGrupo="+idGrupo+" AND idUsuario like '"+u.getUsuario()+"'",null);
@@ -198,6 +209,7 @@ public class DAOUsuario implements Serializable {
         }
     }
     public void cambiarNombreGrupo(int idGrupo, String nombreG){
+        //Cambia el nombre del grupo de id "idGrupo" y le da el nombre "nombreG"
         try {
             ContentValues grupo = new ContentValues();
             grupo.put("nombreGrupo",nombreG);
@@ -222,7 +234,7 @@ public class DAOUsuario implements Serializable {
     }
 
     public void añadirParticipanteGrupo(int idGrupo, String idUser){
-        //agrega el usuario "idUser" al grupo cuyo id es "idGrupo"
+        //agrega el usuario con el id "idUser" al grupo cuyo id es "idGrupo"
         try {
             ContentValues contGrupo_Usuario = new ContentValues();
             contGrupo_Usuario.put("idGrupo",idGrupo);
@@ -241,9 +253,10 @@ public class DAOUsuario implements Serializable {
         Solicitud: Pendiente (Falta confirmar amigo)
                     Confirmado (Ya son amigos)
         */
-            //Si estado es false, no existe registro de que idAmigo1 y idAmigo2 son amigos; caso contrario, si lo son o esta "Pendiente"
-
+        //Si estado es false, no existe registro de que idAmigo1 y idAmigo2 son amigos;
+        // caso contrario, si lo son o esta "Pendiente"
         boolean estado=validarSolicitud(idAmigo1,idAmigo2);
+        //--------------
         try {
             if(estado){
                 Toast.makeText(context, "Amigo ya agregado", Toast.LENGTH_SHORT).show();
@@ -261,7 +274,7 @@ public class DAOUsuario implements Serializable {
     }
 
     public ArrayList<Usuario> getSolicitudesAmistad(String idUsuario){
-        //Obtener todas las solicitudes en estado "Pendiente" del "idUsuario" (usuario logeado)
+        //Obtener todas las solicitudes en estado "Pendiente" del usuario logeado con id "idUsuario"
         ArrayList<Usuario> listaUsuarios=new ArrayList<>();
         try {
             String sql="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario2 like '"+idUsuario+"'"+" AND solicitudEstado like 'Pendiente'";
@@ -281,6 +294,8 @@ public class DAOUsuario implements Serializable {
         Solicitud: Pendiente (Falta confirmar amigo)
                     Confirmado (Ya son amigos)
          */
+        //Cambia el campo solicitudEstado de la tabla TAmigo de "Pendiente" a "Confirmado"
+        //del usuario con id(userAmigo1) con el usuario con id(userAmigo2)
         try {
             ContentValues amigo = new ContentValues();
             amigo.put("solicitudEstado","Confirmado");
@@ -290,6 +305,7 @@ public class DAOUsuario implements Serializable {
         }
     }
     public boolean validarSolicitud(String u1, String u2){
+        //Validar que no se envia solicitud de amistad a un usuario que ya ha sido agregado como amigo o que ya se le envio la solicitud
         //Si estado es false, no existe registro de que u1 y u2 son amigos, caso contrario, si lo son o esta "Pendiente"
         boolean estado=false;
         try {
