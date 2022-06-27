@@ -43,18 +43,23 @@ public class FragmentRegistrar_Grupo extends Fragment {
             @Override
             public void onClick(View view) {
                 nombreGrupo=edtNombreGrupo.getText().toString();
-                Grupo grupo=new Grupo(nombreGrupo);
-                daoUsuario.registrarGrupo(grupo,user);
-                FragmentGrupo fgtGrupo=new FragmentGrupo();
-                Bundle bundle=getActivity().getIntent().getExtras();
-                fgtGrupo.setArguments(bundle);
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container,fgtGrupo)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .addToBackStack(null)
-                        .commit();
-                Toast.makeText(getActivity().getApplicationContext(), "Grupo creado con éxito", Toast.LENGTH_SHORT).show();
+                if(nombreGrupo.isEmpty()){
+                    Toast.makeText(view.getContext(), "Rellene los espacios en blanco", Toast.LENGTH_SHORT).show();
+                }else{
+                    Grupo grupo=new Grupo(nombreGrupo);
+                    daoUsuario.registrarGrupo(grupo,user);
+                    FragmentGrupo fgtGrupo=new FragmentGrupo();
+                    Bundle bundle=getActivity().getIntent().getExtras();
+                    fgtGrupo.setArguments(bundle);
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.container,fgtGrupo)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .addToBackStack(null)
+                            .commit();
+                    Toast.makeText(getActivity().getApplicationContext(), "Grupo creado con éxito", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

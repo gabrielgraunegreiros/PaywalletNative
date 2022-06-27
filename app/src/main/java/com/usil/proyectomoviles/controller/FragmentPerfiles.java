@@ -63,10 +63,14 @@ public class FragmentPerfiles extends Fragment {
             @Override
             public void onClick(View view) {
                 String email = edtEmailPerfil.getText().toString();
-                user.setCorreo(email);
-                daoUsuario.modificarDatos(user);
-                Toast.makeText(getActivity().getApplicationContext(), "Correo Modificado",
-                        Toast.LENGTH_SHORT).show();
+                if(email.isEmpty()){
+                    Toast.makeText(view.getContext(), "Rellene los espacios en blanco", Toast.LENGTH_SHORT).show();
+                }else{
+                    user.setCorreo(email);
+                    daoUsuario.modificarDatos(user);
+                    Toast.makeText(getActivity().getApplicationContext(), "Correo Modificado",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnEliminarPerfil.setOnClickListener(new View.OnClickListener() {

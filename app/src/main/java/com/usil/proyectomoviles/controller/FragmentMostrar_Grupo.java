@@ -125,8 +125,13 @@ public class FragmentMostrar_Grupo extends Fragment {
                 cambiarNombreDialog.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        daoUsuario.cambiarNombreGrupo(idGrupo,edtNuevoNombre.getText().toString());
-                        txtNombreGrupo.setText(daoUsuario.getGrupo(idGrupo).getNombreGrupo());
+                        if(edtNuevoNombre.getText().toString().isEmpty()){
+                            Toast.makeText(view.getContext(), "Rellene los campos vacios", Toast.LENGTH_SHORT).show();
+                        }else{
+                            daoUsuario.cambiarNombreGrupo(idGrupo,edtNuevoNombre.getText().toString());
+                            txtNombreGrupo.setText(daoUsuario.getGrupo(idGrupo).getNombreGrupo());
+                            Toast.makeText(view.getContext(), "Nombre de grupo cambiado", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 cambiarNombreDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
