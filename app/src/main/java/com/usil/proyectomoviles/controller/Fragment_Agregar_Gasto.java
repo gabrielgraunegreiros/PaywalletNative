@@ -78,6 +78,18 @@ public class Fragment_Agregar_Gasto extends Fragment {
                 idUsuarioGasto=sprUsuarioGasto.getSelectedItem().toString();
                 if(idUsuarioGasto.isEmpty() || edtMonto.getText().toString().isEmpty()){
                     Toast.makeText(view.getContext(), "Rellene los campos vacios", Toast.LENGTH_SHORT).show();
+                }else if (tipAct.equals("Ingreso")){
+                    monto=Double.parseDouble(edtMonto.getText().toString());
+                    daoUsuario.agregarActividad(monto,fecha,idUsuarioGasto,getIdTipoActividad(tipAct),user.getUsuario());
+                    Toast.makeText(view.getContext(), "Ingreso añadido", Toast.LENGTH_SHORT).show();
+                    FragmentActividad fgtActividad=new FragmentActividad();
+                    fgtActividad.setArguments(bundle);
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.container,fgtActividad)
+                            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                            .addToBackStack(null)
+                            .commit();
                 }else{
                     monto=Double.parseDouble(edtMonto.getText().toString());
                     daoUsuario.agregarActividad(monto,fecha,idUsuarioGasto,getIdTipoActividad(tipAct),user.getUsuario());
@@ -113,6 +125,7 @@ public class Fragment_Agregar_Gasto extends Fragment {
     private ArrayList<String> getUsuariosAmigos(){
         ArrayList<String> listUsuariosAmigos=new ArrayList<>();
         ArrayList<Usuario> listAmigos= daoUsuario.misAmigos(user.getUsuario());
+        listUsuariosAmigos.add(user.getUsuario());
         for (int i = 0; i < listAmigos.size(); i++) {
             listUsuariosAmigos.add(listAmigos.get(i).getUsuario());
         }

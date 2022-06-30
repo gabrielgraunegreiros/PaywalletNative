@@ -23,11 +23,11 @@
         android:layout_height="100dp"
         android:layout_marginStart="27dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/img_fgt_perfil_avatar_usuario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_fgt_perfil_avatar_usuario"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/img_fgt_perfil_avatar_usuario" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -83,13 +83,21 @@
         android:id="@+id/groupAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="imageView4,textView12" />
+        app:constraint_referenced_ids="imageView4,textView12"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/groupRechazar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="textView13" />
+        app:constraint_referenced_ids="textView13"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtAdapListSoli_NombreUsuario"

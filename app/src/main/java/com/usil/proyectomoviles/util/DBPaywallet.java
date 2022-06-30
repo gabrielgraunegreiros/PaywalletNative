@@ -88,11 +88,11 @@ public class DBPaywallet extends SQLiteOpenHelper {
         //Insercion valores predeterminados
         sqLiteDatabase.execSQL
                 (
-                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Debes');"
+                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Gasto');"
                 );
         sqLiteDatabase.execSQL
                 (
-                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Te debe');"
+                        "INSERT INTO "+ConstantesDB.TABLATIPOACTIVIDAD+"(descripcion)"+" VALUES('Ingreso');"
                 );
 
 

@@ -76,10 +76,10 @@ public class FragmentPerfiles extends Fragment {
         btnEliminarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                daoUsuario.eliminarUsuario(user.getUsuario());
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(getActivity().getApplicationContext(), "Se eliminó tu cuenta",
+                getActivity().finish();
+                Toast.makeText(getActivity().getApplicationContext(), "Se cerró la sesión",
                         Toast.LENGTH_SHORT).show();
             }
         });

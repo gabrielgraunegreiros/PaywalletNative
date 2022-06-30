@@ -330,14 +330,19 @@ public class DAOUsuario implements Serializable {
         try {
             String sql1="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario1 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
             String sql2="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario2 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
+            //String sql3="SELECT * FROM "+ConstantesDB.TABLAUSUARIO+" where usuario like "+idUsuario;
             Cursor cur1=database.rawQuery(sql1,null);
             Cursor cur2=database.rawQuery(sql2,null);
+            //Cursor cur3=database.rawQuery(sql3,null);
             while(cur1.moveToNext()){
                 listaAmigos.add( getUser(cur1.getString(2)));
             }
             while(cur2.moveToNext()){
                 listaAmigos.add( getUser(cur2.getString(1)));
             }
+            /*while (cur3.moveToNext()){
+                listaAmigos.add(getUser(cur3.getString(3)));
+            }*/
             return listaAmigos;
         }catch (Exception e){
             return listaAmigos;
@@ -367,42 +372,60 @@ public class DAOUsuario implements Serializable {
     public void agregarActividad(double monto, String fecha,String idUsuarioGasto, int idTipoActividad, String userLog){
         int idActividad=0;
         try {
-            ContentValues contActividad_User_Registra = new ContentValues();
-            contActividad_User_Registra.put("monto",monto);
-            contActividad_User_Registra.put("fecha",fecha);
-            contActividad_User_Registra.put("idUsuarioGasto",idUsuarioGasto);
-            contActividad_User_Registra.put("estado","Pendiente");
-            contActividad_User_Registra.put("idTipoActividad",idTipoActividad);
-            database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Registra);
-            Cursor c = database.rawQuery("SELECT last_insert_rowid()",null);
-            while (c.moveToNext()){
-                idActividad=c.getInt(0);
-            }
-            ContentValues contUser_Registra=new ContentValues();
-            contUser_Registra.put("idUsuario", userLog);
-            contUser_Registra.put("idActividad", idActividad);
-            database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Registra);
+            if (idUsuarioGasto.equals(userLog)){
+                ContentValues contActividad_User_Registra = new ContentValues();
+                contActividad_User_Registra.put("monto",monto);
+                contActividad_User_Registra.put("fecha",fecha);
+                contActividad_User_Registra.put("idUsuarioGasto",idUsuarioGasto);
+                contActividad_User_Registra.put("estado","Pendiente");
+                contActividad_User_Registra.put("idTipoActividad",idTipoActividad);
+                database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Registra);
+                Cursor c = database.rawQuery("SELECT last_insert_rowid()",null);
+                while (c.moveToNext()){
+                    idActividad=c.getInt(0);
+                }
+                ContentValues contUser_Registra=new ContentValues();
+                contUser_Registra.put("idUsuario", userLog);
+                contUser_Registra.put("idActividad", idActividad);
+                database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Registra);
+            }else {
+                ContentValues contActividad_User_Registra = new ContentValues();
+                contActividad_User_Registra.put("monto",monto);
+                contActividad_User_Registra.put("fecha",fecha);
+                contActividad_User_Registra.put("idUsuarioGasto",idUsuarioGasto);
+                contActividad_User_Registra.put("estado","Pendiente");
+                contActividad_User_Registra.put("idTipoActividad",idTipoActividad);
+                database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Registra);
+                Cursor c = database.rawQuery("SELECT last_insert_rowid()",null);
+                while (c.moveToNext()){
+                    idActividad=c.getInt(0);
+                }
+                ContentValues contUser_Registra=new ContentValues();
+                contUser_Registra.put("idUsuario", userLog);
+                contUser_Registra.put("idActividad", idActividad);
+                database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Registra);
 
-            if(idTipoActividad==1){
-                idTipoActividad=2;
-            }else{
-                idTipoActividad=1;
+                if(idTipoActividad==1){
+                    idTipoActividad=2;
+                }else{
+                    idTipoActividad=1;
+                }
+                ContentValues contActividad_User_Gasto = new ContentValues();
+                contActividad_User_Gasto.put("monto",monto);
+                contActividad_User_Gasto.put("fecha",fecha);
+                contActividad_User_Gasto.put("idUsuarioGasto",userLog);
+                contActividad_User_Gasto.put("estado","Pendiente");
+                contActividad_User_Gasto.put("idTipoActividad",idTipoActividad);
+                database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Gasto);
+                Cursor cursor = database.rawQuery("SELECT last_insert_rowid()",null);
+                while (cursor.moveToNext()){
+                    idActividad=cursor.getInt(0);
+                }
+                ContentValues contUser_Gasto=new ContentValues();
+                contUser_Gasto.put("idUsuario", idUsuarioGasto);
+                contUser_Gasto.put("idActividad", idActividad);
+                database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Gasto);
             }
-            ContentValues contActividad_User_Gasto = new ContentValues();
-            contActividad_User_Gasto.put("monto",monto);
-            contActividad_User_Gasto.put("fecha",fecha);
-            contActividad_User_Gasto.put("idUsuarioGasto",userLog);
-            contActividad_User_Gasto.put("estado","Pendiente");
-            contActividad_User_Gasto.put("idTipoActividad",idTipoActividad);
-            database.insert(ConstantesDB.TABLAACTIVIDAD,null,contActividad_User_Gasto);
-            Cursor cursor = database.rawQuery("SELECT last_insert_rowid()",null);
-            while (cursor.moveToNext()){
-                idActividad=cursor.getInt(0);
-            }
-            ContentValues contUser_Gasto=new ContentValues();
-            contUser_Gasto.put("idUsuario", idUsuarioGasto);
-            contUser_Gasto.put("idActividad", idActividad);
-            database.insert(ConstantesDB.TABLAUSER_ACTIVITY,null,contUser_Gasto);
 
         }catch (Exception e){
 

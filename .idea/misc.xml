@@ -5,23 +5,9 @@
       <map>
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/activity_main.xml" value="0.29322916666666665" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_grupo.xml" value="0.2921875" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_grupo.xml" value="0.5" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_mi_actividad.xml" value="0.5" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_mis_amigos.xml" value="0.5" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_solicitudes_amigos.xml" value="0.5" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/login.xml" value="0.29322916666666665" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_cambiar_perfil.xml" value="0.29322916666666665" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_actividad.xml" value="0.29322916666666665" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_actividad_add_gasto.xml" value="0.2921195652173913" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_amigos.xml" value="0.33" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_grupo.xml" value="0.25" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_mostrar_amigos.xml" value="0.29322916666666665" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_mostrar_grupo.xml" value="0.2921875" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_mostrar_solicitud_amigos.xml" value="0.2921875" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_perfil.xml" value="0.33" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_registrar_grupo.xml" value="0.2921875" />
-        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_home.xml" value="0.26776519052523173" />
+        <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_home.xml" value="0.2" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_principal.xml" value="0.33" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_registro.xml" value="0.29322916666666665" />
         <entry key="..\:/Program Files/Android/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/menu/main_menu.xml" value="0.33" />
@@ -30,12 +16,18 @@
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/drawable/estilo_imagendeperfil.xml" value="0.2515" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_grupo.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_mis_amigos.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/item_lista_solicitudes_amigos.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/login.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_cambiar_perfil.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_actividad.xml" value="0.365625" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_actividad_add_gasto.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_amigos.xml" value="0.365625" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_grupo.xml" value="0.365625" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_grupos.xml" value="0.365625" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_mostrar_grupo.xml" value="0.36102564102564105" />
+        <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_mostrar_solicitud_amigos.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_fgt_perfil.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Akeem/AndroidStudioProjects/ProyectoMoviles/app/src/main/res/layout/lyt_principal.xml" value="0.36102564102564105" />
