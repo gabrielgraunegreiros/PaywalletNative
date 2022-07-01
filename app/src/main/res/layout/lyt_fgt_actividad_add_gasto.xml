@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:text="@string/agregar_gasto"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,11 +33,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:autofillHints=""
+        android:background="@drawable/style_button"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/ingrese_el_monto"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
-        android:textColorHint="#757575"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +55,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtFgtAgregarGasto_Monto"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:background="@drawable/style_spinner"/>
 
     <Spinner
         android:id="@+id/sprFgtAgregarGasto_UsuarioGasto"
@@ -63,5 +68,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:background="@drawable/style_spinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>

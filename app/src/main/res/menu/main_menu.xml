@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_group"
-        android:title="@string/Group"
+        android:title="Grupo"
         android:icon="@drawable/grupo" />
     <item android:id="@+id/menu_friends"
-        android:title="@string/Friends"
+        android:title="Amigos"
         android:icon="@drawable/usuario" />
     <item android:id="@+id/menu_activity"
-        android:title="@string/Activity"
+        android:title="Actividad"
         android:icon="@drawable/conexion_grafica" />
     <item android:id="@+id/menu_profile"
-        android:title="@string/Profile"
+        android:title="Perfil"
         android:icon="@drawable/profile" />
 </menu>

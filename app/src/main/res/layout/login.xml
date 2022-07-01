@@ -54,6 +54,7 @@
         android:backgroundTint="#202F35"
         android:onClick="identificarUsario"
         android:text="Iniciar Sesión"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtContra" />
@@ -64,8 +65,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginTop="54dp"
+        android:layout_marginEnd="8dp"
         android:text="Si aún no tienes una cuenta"
         android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/txtRegistro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
 

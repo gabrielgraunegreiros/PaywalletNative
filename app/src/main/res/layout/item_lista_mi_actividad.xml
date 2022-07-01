@@ -12,6 +12,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/nombre_completo"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,6 +24,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="60dp"
         android:text="@string/monto"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAdapListActividades_idTipoActividad" />
 
@@ -33,6 +35,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="12dp"
         android:text="@string/nombre_de_usuario"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAdapListActividades_NombreCompleto" />
 
@@ -43,6 +46,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:text="@string/tipo_actividad"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -23,6 +23,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
         android:text="@string/amigos"
+        android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
