@@ -10,29 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoMoviles">
         <activity
+            android:name=".controller.SplashScreen"
             android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
-            android:name=".controller.CambiarPerfil"
-            android:exported="false" />
-        <activity
-            android:name=".controller.Home"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"
-            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
-        <activity
-            android:name=".controller.ControllerRegistro"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="false"
-            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar" />
-        <activity
-            android:name=".controller.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true"
-            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".controller.Home"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".controller.ControllerRegistro"
+            android:exported="false"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".controller.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ProyectoMoviles.NoActionBarAndStatusBar"
+            android:windowSoftInputMode="adjustPan">
         </activity>
     </application>
 

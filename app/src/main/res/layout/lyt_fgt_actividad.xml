@@ -9,16 +9,17 @@
         android:id="@+id/btnFgtActividad_AgregarGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:text="@string/agregar_gasto"
+        android:layout_marginTop="12dp"
+        android:text="Añadir Actividad"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/lstFgtActividad_MiActividad"
-        android:layout_width="412dp"
-        android:layout_height="607dp"
+        android:layout_width="413dp"
+        android:layout_height="641dp"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +29,12 @@
         android:id="@+id/txtFgtActividad_MostrarDinero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="38dp"
         android:text="@string/monto_general_s_1000000"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstFgtActividad_MiActividad" />
+        app:layout_constraintStart_toEndOf="@+id/btnFgtActividad_AgregarGasto"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -343,19 +343,14 @@ public class DAOUsuario implements Serializable {
         try {
             String sql1="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario1 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
             String sql2="SELECT * FROM "+ConstantesDB.TABLAAMIGO+" where idUsuario2 like '"+idUsuario+"' AND solicitudEstado like 'Confirmado'";
-            //String sql3="SELECT * FROM "+ConstantesDB.TABLAUSUARIO+" where usuario like "+idUsuario;
             Cursor cur1=database.rawQuery(sql1,null);
             Cursor cur2=database.rawQuery(sql2,null);
-            //Cursor cur3=database.rawQuery(sql3,null);
             while(cur1.moveToNext()){
                 listaAmigos.add( getUser(cur1.getString(2)));
             }
             while(cur2.moveToNext()){
                 listaAmigos.add( getUser(cur2.getString(1)));
             }
-            /*while (cur3.moveToNext()){
-                listaAmigos.add(getUser(cur3.getString(3)));
-            }*/
             return listaAmigos;
         }catch (Exception e){
             return listaAmigos;

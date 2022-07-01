@@ -1,5 +1,7 @@
 package com.usil.proyectomoviles.controller;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -48,10 +51,13 @@ public class FragmentActividad extends Fragment {
         txtMostrarDinero=getView().findViewById(R.id.txtFgtActividad_MostrarDinero);
         AdaptadorListaActividades adaptadorListaActividades=new AdaptadorListaActividades(view.getContext(), daoUsuario.getMiActividad(user.getUsuario()));
         lstMiActividad.setAdapter(adaptadorListaActividades);
-        txtMostrarDinero.setText("S/."+daoUsuario.obtenerBalanceDinero(user.getUsuario()));
-        if(daoUsuario.obtenerBalanceDinero(user.getUsuario())<0){
+        txtMostrarDinero.setText("Saldo actual: S/."+daoUsuario.obtenerBalanceDinero(user.getUsuario()));
+        if(daoUsuario.obtenerBalanceDinero(user.getUsuario())<=0){
             txtMostrarDinero.setTextColor(Color.RED);
-        }else if(daoUsuario.obtenerBalanceDinero(user.getUsuario())>0){
+        }else if(daoUsuario.obtenerBalanceDinero(user.getUsuario())>0 && daoUsuario.obtenerBalanceDinero(user.getUsuario())<=150){
+            txtMostrarDinero.setTextColor(Color.YELLOW);
+            advertenciaDinero();
+        } else {
             txtMostrarDinero.setTextColor(Color.GREEN);
         }
         btnAgregarGasto.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +75,17 @@ public class FragmentActividad extends Fragment {
         });
 
     }
+
     private void recuperarUsuario() {
         bundle = getArguments();
         user = (Usuario) bundle.getSerializable("user");
+    }
+
+    private void advertenciaDinero(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Advertencia");
+        builder.setMessage("Su dinero se está agotando, considere disminuir sus gastos.");
+        builder.setPositiveButton("OK",null);
+        builder.show();
     }
 }

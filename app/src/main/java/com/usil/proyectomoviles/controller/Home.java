@@ -69,11 +69,11 @@ public class Home extends AppCompatActivity{
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == event.KEYCODE_BACK){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Home.this);
             builder.setMessage("¿Desea salir de Paywallet?").setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    System.exit(0);
+                    finish();
                 }
             })
                     .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

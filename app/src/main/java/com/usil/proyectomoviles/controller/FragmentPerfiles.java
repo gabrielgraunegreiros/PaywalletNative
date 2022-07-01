@@ -83,27 +83,5 @@ public class FragmentPerfiles extends Fragment {
                         Toast.LENGTH_SHORT).show();
             }
         });
-
-        imgFotoPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("¿Desea cambiar su foto de perfil?");
-                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(getActivity(), CambiarPerfil.class);
-                                startActivity(intent);
-                            }
-                        })
-                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                builder.show();
-            }
-        });
     }
 }
