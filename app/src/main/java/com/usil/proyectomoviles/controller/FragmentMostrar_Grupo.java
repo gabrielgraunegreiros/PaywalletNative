@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -62,7 +63,20 @@ public class FragmentMostrar_Grupo extends Fragment {
         }
         ArrayAdapter adapter=new ArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1,listaUsuariod_De_Grupo);
         lstMostrarParticipantes.setAdapter(adapter);
-
+        lstMostrarParticipantes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Fragment_Agregar_Gasto fgtAgregarGasto=new Fragment_Agregar_Gasto();
+                bundle.putString("userGrupo", listaUsuariod_De_Grupo.get(i));
+                fgtAgregarGasto.setArguments(bundle);
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container,fgtAgregarGasto)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         btnAñadirParticipante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,14 +90,18 @@ public class FragmentMostrar_Grupo extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         if(daoUsuario.existeUsuario(edtNuevoParticipante.getText().toString())){
-                            daoUsuario.añadirParticipanteGrupo(idGrupo,edtNuevoParticipante.getText().toString());
-                            Toast.makeText(view.getContext(), "Usuario agregado al grupo", Toast.LENGTH_SHORT).show();
-                            listaUsuariod_De_Grupo.clear();
-                            for (int m = 0; m < daoUsuario.getUsuarios_de_Grupo(idGrupo).size(); m++) {
-                                listaUsuariod_De_Grupo.add(daoUsuario.getUsuarios_de_Grupo(idGrupo).get(m).getUsuario());
+                            if(daoUsuario.isAmigo(user.getUsuario(),edtNuevoParticipante.getText().toString())){
+                                daoUsuario.añadirParticipanteGrupo(idGrupo,edtNuevoParticipante.getText().toString(),view.getContext());
+
+                                listaUsuariod_De_Grupo.clear();
+                                for (int m = 0; m < daoUsuario.getUsuarios_de_Grupo(idGrupo).size(); m++) {
+                                    listaUsuariod_De_Grupo.add(daoUsuario.getUsuarios_de_Grupo(idGrupo).get(m).getUsuario());
+                                }
+                                ArrayAdapter newAdapter=new ArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1,listaUsuariod_De_Grupo);
+                                lstMostrarParticipantes.setAdapter(newAdapter);
+                            }else{
+                                Toast.makeText(view.getContext(), "El usuario no es tu amigo", Toast.LENGTH_SHORT).show();
                             }
-                            ArrayAdapter newAdapter=new ArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1,listaUsuariod_De_Grupo);
-                            lstMostrarParticipantes.setAdapter(newAdapter);
                         }else{
                             Toast.makeText(view.getContext(), "Usuario no existente", Toast.LENGTH_SHORT).show();
                         }

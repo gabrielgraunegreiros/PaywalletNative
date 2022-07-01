@@ -51,12 +51,13 @@ public class Fragment_Agregar_Gasto extends Fragment {
         daoUsuario = new DAOUsuario(getActivity().getApplicationContext());
         daoUsuario.openDB();
         recuperarUsuario();
-
+        String userG=bundle.getString("userGrupo");
+        
         btnGuardar=getView().findViewById(R.id.btnFgtAgregarGasto_Guardar);
         sprUsuarioGasto=getView().findViewById(R.id.sprFgtAgregarGasto_UsuarioGasto);
         edtMonto=getView().findViewById(R.id.edtFgtAgregarGasto_Monto);
         sprTipoActividad=getView().findViewById(R.id.sprFgtAgregarGasto_TipoActividad);
-
+        
         listaTipoActidad= daoUsuario.getTipoActividad();
         ArrayAdapter tiposActividad=new ArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1, listaTipoActidad);
         sprTipoActividad.setAdapter(tiposActividad);
@@ -64,7 +65,13 @@ public class Fragment_Agregar_Gasto extends Fragment {
 
         ArrayAdapter amigoGasto=new ArrayAdapter(view.getContext(), android.R.layout.simple_list_item_1, getUsuariosAmigos());
         sprUsuarioGasto.setAdapter(amigoGasto);
-
+        int pos=0;
+        for (int i = 0; i < getUsuariosAmigos().size(); i++) {
+            if(getUsuariosAmigos().get(i).equals(userG)){
+                pos=i;
+            }
+        }
+        sprUsuarioGasto.setSelection(pos);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

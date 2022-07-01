@@ -233,13 +233,26 @@ public class DAOUsuario implements Serializable {
         }
     }
 
-    public void añadirParticipanteGrupo(int idGrupo, String idUser){
+    public void añadirParticipanteGrupo(int idGrupo, String idUser, Context context){
         //agrega el usuario con el id "idUser" al grupo cuyo id es "idGrupo"
+        ArrayList<Usuario> listaUsuariosDeGrupo=getUsuarios_de_Grupo(idGrupo);
+        boolean estado=false;
         try {
-            ContentValues contGrupo_Usuario = new ContentValues();
-            contGrupo_Usuario.put("idGrupo",idGrupo);
-            contGrupo_Usuario.put("idUsuario",idUser);
-            database.insert(ConstantesDB.TABLAGRUPO_USUARIO,null,contGrupo_Usuario);
+            for (int i = 0; i < listaUsuariosDeGrupo.size(); i++) {
+                if(listaUsuariosDeGrupo.get(i).getUsuario().equals(idUser)){
+                    estado=true;
+                    break;
+                }
+            }
+            if(estado){
+                Toast.makeText(context, "Participante ya agregado", Toast.LENGTH_SHORT).show();
+            }else{
+                ContentValues contGrupo_Usuario = new ContentValues();
+                contGrupo_Usuario.put("idGrupo",idGrupo);
+                contGrupo_Usuario.put("idUsuario",idUser);
+                database.insert(ConstantesDB.TABLAGRUPO_USUARIO,null,contGrupo_Usuario);
+                Toast.makeText(context, "Usuario agregado al grupo", Toast.LENGTH_SHORT).show();
+            }
         }catch (Exception e){
 
         }
@@ -346,6 +359,23 @@ public class DAOUsuario implements Serializable {
             return listaAmigos;
         }catch (Exception e){
             return listaAmigos;
+        }
+    }
+    public boolean isAmigo(String userLog, String userAmigo){
+        //estado=true:Son amigos
+        //estado=false: No son amigos
+        boolean estado=false;
+        ArrayList<Usuario> listaMisAmigos;
+        try {
+            listaMisAmigos=misAmigos(userLog);
+            for (int i = 0; i <listaMisAmigos.size(); i++) {
+                if(listaMisAmigos.get(i).getUsuario().equals(userAmigo)){
+                    estado=true;
+                }
+            }
+            return estado;
+        }catch (Exception e){
+            return estado;
         }
     }
     //--------------Fin algoritmos Amigos-----------
