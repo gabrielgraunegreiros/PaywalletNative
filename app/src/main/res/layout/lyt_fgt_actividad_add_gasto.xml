@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="@string/agregar_gasto"
+        android:text="Añadir actividad"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,12 +62,12 @@
         android:id="@+id/sprFgtAgregarGasto_UsuarioGasto"
         android:layout_width="287dp"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/style_spinner"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:background="@drawable/style_spinner" />
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

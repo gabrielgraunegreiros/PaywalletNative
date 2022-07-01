@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lstFgtGrupo_Grupos"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintVertical_bias="0.132" />
 
     <ListView
         android:id="@+id/lstFgtGrupo_Grupos"
