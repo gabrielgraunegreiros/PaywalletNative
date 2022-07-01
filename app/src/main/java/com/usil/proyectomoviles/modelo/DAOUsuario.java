@@ -448,6 +448,23 @@ public class DAOUsuario implements Serializable {
             return listaMiActividad;
         }
     }
+    public double obtenerBalanceDinero(String user){
+        double dineroTotal=0.0;
+        ArrayList<Actividad> listaMisActividades;
+        try {
+            listaMisActividades=getMiActividad(user);
+            for (int i = 0; i < listaMisActividades.size(); i++) {
+                if(listaMisActividades.get(i).getIdTipoActividad()==1){
+                    dineroTotal-=listaMisActividades.get(i).getMonto();
+                }else{
+                    dineroTotal+=listaMisActividades.get(i).getMonto();
+                }
+            }
+            return dineroTotal;
+        }catch (Exception e){
+            return dineroTotal;
+        }
+    }
 
     //--------------Fin algoritmos Actividad---------
     //--------------Inicio algoritmos Tipo_Actividad---------

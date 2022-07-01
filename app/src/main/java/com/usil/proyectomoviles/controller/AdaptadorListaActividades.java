@@ -1,6 +1,7 @@
 package com.usil.proyectomoviles.controller;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,13 @@ public class AdaptadorListaActividades extends BaseAdapter {
         txtUsuario.setText(act.getIdUsuarioGasto()+"");
         txtMonto.setText("S/. "+act.getMonto());
         txtIdTipoActividad.setText(daoUsuario.getDescripTipoActividad(act.getIdTipoActividad()));
+        if(act.getIdTipoActividad()==1){
+            txtIdTipoActividad.setTextColor(Color.RED);
+            txtMonto.setTextColor(Color.RED);
+        }else{
+            txtIdTipoActividad.setTextColor(Color.GREEN);
+            txtMonto.setTextColor(Color.GREEN);
+        }
 
 
         return view;

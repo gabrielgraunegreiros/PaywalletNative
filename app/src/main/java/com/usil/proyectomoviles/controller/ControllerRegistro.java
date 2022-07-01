@@ -51,10 +51,14 @@ public class ControllerRegistro extends AppCompatActivity {
         contraseña = edtContraseña.getText().toString();
         confirmar = edtConfirmar.getText().toString();
         if(confirmar.equals(contraseña)){
-            u = new Usuario(nombre,apellidos,correo,usuario,contraseña);
-            daoUsuario.registrarUsuario(u);
-            Toast.makeText(ControllerRegistro.this,"Registrado correctamente",Toast.LENGTH_SHORT).show();
-            limpiar();
+            if(daoUsuario.existeUsuario(usuario)){
+                Toast.makeText(this, "Nombre de usuario ya existente", Toast.LENGTH_SHORT).show();
+            }else{
+                u = new Usuario(nombre,apellidos,correo,usuario,contraseña);
+                daoUsuario.registrarUsuario(u);
+                Toast.makeText(ControllerRegistro.this,"Registrado correctamente",Toast.LENGTH_SHORT).show();
+                limpiar();
+            }
         } else {
             Toast.makeText(ControllerRegistro.this,"Confirme la contraseña correctamente",Toast.LENGTH_SHORT).show();
         }
